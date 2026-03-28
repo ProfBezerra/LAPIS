@@ -4,6 +4,10 @@
 
 *Um framework de liderança em engenharia de software orientado a princípios*
 
+
+<img src="images/imagemLAPIS.png" width="450" alt="Modelo LAPIS - Apresentação"/>
+
+
 **Autor:** Marcelo Bezerra de Alcântara
 
 ---
@@ -299,50 +303,13 @@ Comprometimentos:
 
 # 5. Mapa do Modelo
 
-```mermaid
-graph TD
-    LAPIS((LAPIS))
-
-    LAPIS --> L[L - Liderança de Pessoas]
-    LAPIS --> A[A - Agilidade Operacional]
-    LAPIS --> P[P - Padronização e Estrutura]
-    LAPIS --> I[I - Integração e Governança]
-    LAPIS --> S[S - Sucesso do Cliente]
-
-    L --> P1[P1 - Centralidade das Pessoas]
-    L --> P2[P2 - Colaboração Estruturada]
-
-    A --> P3[P3 - Primazia da Producao]
-    A --> P4[P4 - Foco e Fluxo Sustentavel]
-
-    P --> P5[P5 - Automacao Inteligente]
-    P --> P6[P6 - Padronizacao Tecnologica]
-
-    I --> P7[P7 - Organizacao Estrutural]
-    I --> P8[P8 - Governanca Consciente]
-
-    S --> P9[P9 - Resiliencia Organizacional]
-    S --> P10[P10 - Parceria com o Cliente]
-```
+![Modelo LAPIS - Mapa das Dimensões e Princípios](diagrams/lapis-mapa.png)
 
 ---
 
 ## Fluxo de Sustentação
 
-```mermaid
-graph TD
-    L[L - Liderança de Pessoas]
-    A[A - Agilidade Operacional]
-    PA[P - Padronização e Estrutura]
-    IG[I - Integração e Governança]
-    SC[S - Sucesso do Cliente]
-
-    L -->|sustenta| A
-    A -->|sustenta| PA
-    PA -->|sustenta| IG
-    IG -->|sustenta| SC
-    SC -->|gera valor| L
-```
+![Modelo LAPIS - Fluxo de Sustentação](diagrams/lapis-fluxo.png)
 
 ---
 
