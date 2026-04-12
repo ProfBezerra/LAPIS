@@ -354,7 +354,36 @@ Não há pré-requisito de framework, porte de equipe ou maturidade tecnológica
 
 ---
 
-# 9. Benefícios Esperados e Como Medir
+# 9. Processo de Requisitos no LAPIS
+
+O LAPIS incorpora um processo de requisitos contínuo e iterativo, do entendimento inicial do problema até a validação final da solução com o cliente e com o negócio.
+
+As quatro etapas abaixo devem ser executadas com critérios claros de entrada e saída, reduzindo retrabalho e aumentando previsibilidade.
+
+| Etapa | Objetivo | Perguntas-chave | Saídas esperadas |
+| --- | --- | --- | --- |
+| **1. Análise de Viabilidade** | Verificar se a demanda é viável técnica, operacional e estrategicamente | Faz sentido para o negócio? Há capacidade técnica e prazo realista? Quais riscos e dependências existem? | Parecer de viabilidade, escopo inicial, riscos mapeados, decisão de seguir ou ajustar |
+| **2. Elicitação** | Levantar necessidades, regras e restrições com as partes interessadas | Quem são os usuários? Quais dores e objetivos? Quais regras de negócio e integrações? | Requisitos funcionais e não funcionais levantados, contexto do problema, hipóteses priorizadas |
+| **3. Especificação** | Transformar necessidades em descrição clara, testável e implementável | O requisito está claro, sem ambiguidade e com critérios de aceite? Há rastreabilidade? | Especificação estruturada, critérios de aceite, fluxos principais e exceções, backlog refinado |
+| **4. Validação** | Confirmar que o que foi especificado e entregue atende ao valor esperado | O requisito resolve o problema real? Os critérios de aceite foram atendidos? O cliente concorda com o resultado? | Evidências de validação, feedback do cliente, ajustes finais e aceite |
+
+## Princípios LAPIS mais acionados no processo
+
+* **P1 e P2**: colaboração ativa entre liderança, time técnico e cliente
+* **P4**: foco no que gera resultado, evitando escopo difuso
+* **P7 e P8**: especificação organizada e aderente a padrões e governança
+* **P10**: validação orientada ao valor de negócio
+
+## Critério de qualidade para avançar entre etapas
+
+* Nenhuma etapa deve avançar com ambiguidades críticas em aberto
+* Todo requisito deve possuir critério de aceite verificável
+* Mudanças de escopo devem retornar ao ciclo de elicitação/especificação
+* A validação deve registrar evidências objetivas, não apenas percepção informal
+
+---
+
+# 10. Benefícios Esperados e Como Medir
 
 Os benefícios do modelo são observáveis e mensuráveis. Cada um deve ser acompanhado por indicadores definidos pelo time no início da adoção.
 
@@ -371,7 +400,7 @@ Os benefícios do modelo são observáveis e mensuráveis. Cada um deve ser acom
 
 ---
 
-# 10. Posicionamento do Líder
+# 11. Posicionamento do Líder
 
 O líder que adota o Modelo LAPIS atua como:
 
@@ -385,7 +414,7 @@ Esse posicionamento não é um conjunto de papéis alternativos — é a atuaç�
 
 ---
 
-# 11. Considerações Finais
+# 12. Considerações Finais
 
 O Modelo LAPIS não propõe uma receita, nem substitui o julgamento do líder. Ele oferece uma estrutura de referência para que decisões difíceis sejam tomadas com base em princípios estáveis, em vez de reações ao contexto imediato.
 

@@ -1,0 +1,192 @@
+[
+  {
+    "title": "[US] Definir visão do produto",
+    "body": "Como equipe do projeto, quero definir a visão do produto para alinhar o entendimento do problema e da solução.\n\nCritérios de Aceitação:\n- Problema atual descrito\n- Público-alvo identificado\n- Objetivo do sistema definido\n- Benefícios esperados listados",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "elicitação",
+      "alta"
+    ],
+    "sprint": "Sprint 1"
+  },
+  {
+    "title": "[US] Identificar stakeholders",
+    "body": "Como equipe, quero identificar stakeholders para entender quem será impactado pelo sistema.\n\nCritérios de Aceitação:\n- Lista de stakeholders criada\n- Papéis definidos\n- Nível de influência identificado",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "elicitação",
+      "alta"
+    ],
+    "sprint": "Sprint 1"
+  },
+  {
+    "title": "[US] Elaborar roteiro de entrevistas",
+    "body": "Criar roteiro de entrevistas.\n\nCritérios de Aceitação:\n- Perguntas abertas definidas\n- Foco em problemas reais\n- Documento estruturado",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "elicitação",
+      "media"
+    ],
+    "sprint": "Sprint 1"
+  },
+  {
+    "title": "[US] Realizar entrevistas",
+    "body": "Executar entrevistas com stakeholders.\n\nCritérios de Aceitação:\n- Entrevistas realizadas\n- Resumo documentado\n- Dores identificadas",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "elicitação",
+      "alta"
+    ],
+    "sprint": "Sprint 1"
+  },
+  {
+    "title": "[US] Levantar requisitos funcionais",
+    "body": "Identificar requisitos funcionais.\n\nCritérios de Aceitação:\n- Lista clara de funcionalidades\n- Escrita objetiva",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "elicitação",
+      "alta"
+    ],
+    "sprint": "Sprint 2"
+  },
+  {
+    "title": "[US] Levantar requisitos não funcionais",
+    "body": "Identificar requisitos não funcionais.\n\nCritérios de Aceitação:\n- Segurança definida\n- Usabilidade definida\n- Desempenho considerado",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "elicitação",
+      "media"
+    ],
+    "sprint": "Sprint 2"
+  },
+  {
+    "title": "[US] Definir regras de negócio",
+    "body": "Documentar regras de negócio.\n\nCritérios de Aceitação:\n- Regras documentadas\n- Consistência com requisitos",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "elicitação",
+      "alta"
+    ],
+    "sprint": "Sprint 2"
+  },
+  {
+    "title": "[US] Criar backlog inicial priorizado",
+    "body": "Organizar backlog com prioridades.\n\nCritérios de Aceitação:\n- User stories definidas\n- Priorização feita",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "elicitação",
+      "alta"
+    ],
+    "sprint": "Sprint 2"
+  },
+  {
+    "title": "[US] Criar diagrama de casos de uso",
+    "body": "Modelar casos de uso.\n\nCritérios de Aceitação:\n- Atores definidos\n- Casos de uso claros",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "uml",
+      "alta"
+    ],
+    "sprint": "Sprint 3"
+  },
+  {
+    "title": "[US] Criar diagrama de classes",
+    "body": "Modelar classes do sistema.\n\nCritérios de Aceitação:\n- Classes identificadas\n- Relacionamentos definidos",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "uml",
+      "alta"
+    ],
+    "sprint": "Sprint 3"
+  },
+  {
+    "title": "[US] Criar diagrama de sequência",
+    "body": "Modelar fluxo principal.\n\nCritérios de Aceitação:\n- Fluxo principal modelado\n- Interações claras",
+    "milestone": "M1 - Elicitação e UML",
+    "labels": [
+      "uml",
+      "media"
+    ],
+    "sprint": "Sprint 3"
+  },
+  {
+    "title": "[US] Estruturar documento SRS",
+    "body": "Criar estrutura SRS.\n\nCritérios de Aceitação:\n- Estrutura IEEE 830\n- Seções organizadas",
+    "milestone": "M2 - Especificação e Protótipo",
+    "labels": [
+      "srs",
+      "alta"
+    ],
+    "sprint": "Sprint 4"
+  },
+  {
+    "title": "[US] Documentar requisitos no SRS",
+    "body": "Detalhar requisitos no SRS.\n\nCritérios de Aceitação:\n- Requisitos completos\n- Clareza na escrita",
+    "milestone": "M2 - Especificação e Protótipo",
+    "labels": [
+      "srs",
+      "alta"
+    ],
+    "sprint": "Sprint 4"
+  },
+  {
+    "title": "[US] Revisar consistência UML e SRS",
+    "body": "Garantir alinhamento.\n\nCritérios de Aceitação:\n- UML alinhada com requisitos\n- Ajustes realizados",
+    "milestone": "M2 - Especificação e Protótipo",
+    "labels": [
+      "srs",
+      "media"
+    ],
+    "sprint": "Sprint 4"
+  },
+  {
+    "title": "[US] Criar wireframes das telas",
+    "body": "Desenhar telas principais.\n\nCritérios de Aceitação:\n- Tela inicial\n- Retirada\n- Devolução\n- Consulta",
+    "milestone": "M2 - Especificação e Protótipo",
+    "labels": [
+      "prototipo",
+      "alta"
+    ],
+    "sprint": "Sprint 5"
+  },
+  {
+    "title": "[US] Criar protótipo navegável",
+    "body": "Desenvolver protótipo.\n\nCritérios de Aceitação:\n- Navegação funcional\n- Fluxo completo",
+    "milestone": "M2 - Especificação e Protótipo",
+    "labels": [
+      "prototipo",
+      "alta"
+    ],
+    "sprint": "Sprint 5"
+  },
+  {
+    "title": "[US] Criar slides do pitch",
+    "body": "Preparar apresentação.\n\nCritérios de Aceitação:\n- Problema\n- Solução\n- Protótipo\n- Benefícios",
+    "milestone": "M3 - Pitch",
+    "labels": [
+      "pitch",
+      "alta"
+    ],
+    "sprint": "Sprint 5"
+  },
+  {
+    "title": "[US] Definir storytelling",
+    "body": "Criar narrativa.\n\nCritérios de Aceitação:\n- Narrativa lógica\n- Início, meio e fim",
+    "milestone": "M3 - Pitch",
+    "labels": [
+      "pitch",
+      "media"
+    ],
+    "sprint": "Sprint 5"
+  },
+  {
+    "title": "[US] Ensaiar apresentação",
+    "body": "Treinar apresentação.\n\nCritérios de Aceitação:\n- Tempo controlado\n- Clareza na fala",
+    "milestone": "M3 - Pitch",
+    "labels": [
+      "pitch",
+      "alta"
+    ],
+    "sprint": "Sprint 5"
+  }
+]

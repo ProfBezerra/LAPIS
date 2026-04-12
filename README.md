@@ -12,7 +12,7 @@ Um framework de liderança em engenharia de software orientado a princípios, qu
 
 O LAPIS parte da convicção de que **agilidade não é definida por frameworks**, mas pela qualidade das decisões guiadas por princípios claros e consistentes.
 
-O modelo é estruturado em **5 dimensões** e **10 princípios** que traduzem essas convicções em comportamentos e decisões cotidianas do líder.
+O modelo é estruturado em **5 dimensões**, **10 princípios** e uma definição de **processo de requisitos em 4 etapas** (Análise de Viabilidade, Elicitação, Especificação e Validação), traduzindo essas convicções em comportamentos e decisões cotidianas do líder.
 
 ```mermaid
 graph TD
@@ -68,3 +68,7 @@ graph TD
 O modelo completo, com descrição de cada dimensão, princípios detalhados, mapa visual, benefícios esperados e posicionamento do líder, está disponível em:
 
 📄 [Lapis-v2.md](Lapis-v2.md)
+
+Para aplicação prática em turma (issues, milestones, sprints e kanban por aluno), consulte:
+
+📄 [TUTORIAL_GITHUB_PROJECTS.md](TUTORIAL_GITHUB_PROJECTS.md)
