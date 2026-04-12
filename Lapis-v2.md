@@ -354,9 +354,13 @@ Não há pré-requisito de framework, porte de equipe ou maturidade tecnológica
 
 ---
 
+
 # 9. Processo de Requisitos no LAPIS
 
 O LAPIS incorpora um processo de requisitos contínuo e iterativo, do entendimento inicial do problema até a validação final da solução com o cliente e com o negócio.
+
+> **Referência:**
+> Para elaboração do documento de visão, utilize o [guia de elaboração do documento de visão](Requisitos/Elicitacao/VisaoDemanda.md) e o [template de visão de demanda](Requisitos/Artefatos/Elicitacao/template-visao-demanda.md) disponíveis neste repositório.
 
 As quatro etapas abaixo devem ser executadas com critérios claros de entrada e saída, reduzindo retrabalho e aumentando previsibilidade.
 
