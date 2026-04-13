@@ -5,7 +5,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Repo,
 
-    [string]$JsonPath = "Requisitos/Artefatos/issues_github.json",
+    [string]$JsonPath = "GestaoConfiguracao/issues_github.json",
 
     [string]$Token = $env:GITHUB_TOKEN,
 

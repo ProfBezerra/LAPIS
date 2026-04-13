@@ -71,4 +71,4 @@ O modelo completo, com descrição de cada dimensão, princípios detalhados, ma
 
 Para aplicação prática em turma (issues, milestones, sprints e kanban por aluno), consulte:
 
-📄 [TUTORIAL_GITHUB_PROJECTS.md](TUTORIAL_GITHUB_PROJECTS.md)
+📄 [TUTORIAL_GITHUB_PROJECTS.md](GestaoConfiguracao/TUTORIAL_GITHUB_PROJECTS.md)

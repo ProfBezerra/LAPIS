@@ -3,7 +3,7 @@
 
 > **Como usar este guia:**
 > 1. Leia este documento antes de iniciar a elaboração da visão de demanda.
-> 2. Sempre utilize o [template de visão](../Artefatos/Elicitacao/template-visao-demanda.md) para registrar sua demanda.
+> 2. Sempre utilize o [template de visão](../Artefatos/Elicitacao/Templates/template-visao-demanda.md) para registrar sua demanda.
 > 3. Preencha cada seção com informações claras, objetivas e sem jargões técnicos desnecessários.
 > 4. Consulte os exemplos práticos abaixo e utilize artefatos visuais (mapa de histórias, diagrama de caso de uso) sempre que possível.
 > 5. Ao final, valide seu documento com o checklist.
@@ -75,7 +75,7 @@ Durante a Elicitação da visão de uma demanda nova ou de uma grande mudança d
 ## Artefatos
 
 ### Elaborados na execução da prática
-- [Visão da solução preenchida (use o template)](../Artefatos/Elicitacao/template-visao-demanda.md)
+- [Visão da solução preenchida (use o template)](../Artefatos/Elicitacao/Templates/template-visao-demanda.md)
 
 ### Utilizados como insumo
 - [Glossário](https://unifica.pages.serpro/artefatos/glossario/)
@@ -110,4 +110,4 @@ Consulte exemplos fictícios no próprio template e nos comentários deste guia.
 ## Referências
 
 - [Github Docs](https://docs.github.com/pt)
-- [Template de Visão de Demanda](../Artefatos/Elicitacao/template-visao-demanda.md)
+- [Template de Visão de Demanda](../Artefatos/Elicitacao/Templates/template-visao-demanda.md)

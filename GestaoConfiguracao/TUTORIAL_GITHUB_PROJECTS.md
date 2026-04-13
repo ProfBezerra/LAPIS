@@ -25,7 +25,7 @@
 - O repositório do grupo deve conter:
   - `scripts/import-github-issues.ps1`
   - `scripts/sync-project-sprints.ps1`
-  - `Requisitos/Artefatos/issues_github.json`
+  - `GestaoConfiguracao/issues_github.json`
 
 ---
 

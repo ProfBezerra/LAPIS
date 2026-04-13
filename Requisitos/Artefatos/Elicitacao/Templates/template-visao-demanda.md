@@ -4,7 +4,7 @@
 >
 > 1. Copie este template para cada nova demanda/projeto.
 > 2. Preencha cada seção com informações claras, objetivas e sem jargões técnicos desnecessários.
-> 3. Consulte o [guia de elaboração](../../Elicitacao/VisaoDemanda.md) para dicas e exemplos.
+> 3. Consulte o [guia de elaboração](../../../Elicitacao/VisaoDemanda.md) para dicas e exemplos.
 > 4. Use artefatos visuais (mapa de histórias, diagrama de caso de uso) sempre que possível.
 
 ## Histórico de Versões
@@ -149,4 +149,4 @@ Sugestão: utilize mapas de histórias ou diagramas de caso de uso (UML) para il
 
 ---
 
-> Consulte exemplos e dicas em: [Guia de Elaboração da Visão](../../Elicitacao/VisaoDemanda.md)
+> Consulte exemplos e dicas em: [Guia de Elaboração da Visão](../../../Elicitacao/VisaoDemanda.md)
