@@ -31,7 +31,7 @@
 
 ## 1. Objetivo
 
-Definir a proposta de valor e o escopo do Sistema de Gestão das Feiras Livres de Fortaleza, detalhando as necessidades da Secretaria Municipal, dos feirantes e dos fiscais.
+Definir a proposta de valor e o escopo do Sistema de Gestão das Feiras Livres de Fortaleza, detalhando as necessidades da Secretaria Municipal, dos [feirantes](glossario-feira-livre.md#feirante) e dos fiscais.
 
 ## 2. Proposta de Valor
 
@@ -39,7 +39,7 @@ O sistema permitirá modernizar e digitalizar o controle das feiras livres munic
 
 ## 3. Descrição da Demanda
 
-O sistema apoiará a Secretaria na organização das feiras, cadastro e controle de feirantes, registro de barracas, pagamento de taxas, geração de relatórios e consulta por fiscais. Todo o processo será digital, com autenticação de usuários e histórico de alterações.
+O sistema apoiará a Secretaria na organização das feiras, cadastro e controle de [feirantes](glossario-feira-livre.md#feirante), registro de [barracas](glossario-feira-livre.md#barraca), pagamento de taxas, geração de relatórios e consulta por fiscais. Todo o processo será digital, com autenticação de usuários e histórico de alterações.
 
 ## 4. Partes Interessadas
 
@@ -64,8 +64,10 @@ O sistema apoiará a Secretaria na organização das feiras, cadastro e controle
 
 ### Necessidade 1: Cadastro e controle de feirantes
 
+> **Nota:** Os termos [feirante](glossario-feira-livre.md#feirante) e [barraca](glossario-feira-livre.md#barraca) estão definidos no [glossário do projeto](glossario-feira-livre.md).
+
 #### F1.1 Cadastro de feirante
-- **Descrição:** Permite cadastrar feirantes com nome, CPF, produto e telefone.
+- **Descrição:** Permite cadastrar [feirantes](glossario-feira-livre.md#feirante) com nome, CPF, produto e telefone.
 - **Incluída**
 - **Atores:** Secretaria Municipal
 - **Frequência:** Alta
@@ -88,7 +90,7 @@ O sistema apoiará a Secretaria na organização das feiras, cadastro e controle
 - **Valor:** Alto
 
 #### F2.2 Controle de barracas por feirante
-- **Descrição:** Permite associar uma barraca a cada feirante por feira.
+- **Descrição:** Permite associar uma [barraca](glossario-feira-livre.md#barraca) a cada [feirante](glossario-feira-livre.md#feirante) por feira.
 - **Incluída**
 - **Atores:** Secretaria Municipal
 - **Frequência:** Alta
