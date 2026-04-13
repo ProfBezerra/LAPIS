@@ -31,7 +31,7 @@
 
 ## 1. Objetivo
 
-Definir a proposta de valor e o escopo do Sistema de Gestão das Feiras Livres de Fortaleza, detalhando as necessidades da Secretaria Municipal, dos [feirantes](glossario-feira-livre.md#feirante) e dos fiscais.
+Definir a proposta de valor e o escopo do Sistema de Gestão das Feiras Livres de Fortaleza, detalhando as necessidades da Secretaria Municipal, dos [feirantes](../glossario-feira-livre.md#feirante) e dos fiscais.
 
 ## 2. Proposta de Valor
 
@@ -39,7 +39,7 @@ O sistema permitirá modernizar e digitalizar o controle das feiras livres munic
 
 ## 3. Descrição da Demanda
 
-O sistema apoiará a Secretaria na organização das feiras, cadastro e controle de [feirantes](glossario-feira-livre.md#feirante), registro de [barracas](glossario-feira-livre.md#barraca), pagamento de taxas, geração de relatórios e consulta por fiscais. Todo o processo será digital, com autenticação de usuários e histórico de alterações.
+O sistema apoiará a Secretaria na organização das feiras, cadastro e controle de [feirantes](../glossario-feira-livre.md#feirante), registro de [barracas](../glossario-feira-livre.md#barraca), pagamento de taxas, geração de relatórios e consulta por fiscais. Todo o processo será digital, com autenticação de usuários e histórico de alterações.
 
 ## 4. Partes Interessadas
 
@@ -64,10 +64,10 @@ O sistema apoiará a Secretaria na organização das feiras, cadastro e controle
 
 ### Necessidade 1: Cadastro e controle de feirantes
 
-> **Nota:** Os termos [feirante](glossario-feira-livre.md#feirante) e [barraca](glossario-feira-livre.md#barraca) estão definidos no [glossário do projeto](glossario-feira-livre.md).
+> **Nota:** Os termos [feirante](../glossario-feira-livre.md#feirante) e [barraca](../glossario-feira-livre.md#barraca) estão definidos no [glossário do projeto](../glossario-feira-livre.md).
 
 #### F1.1 Cadastro de feirante
-- **Descrição:** Permite cadastrar [feirantes](glossario-feira-livre.md#feirante) com nome, CPF, produto e telefone.
+- **Descrição:** Permite cadastrar [feirantes](../glossario-feira-livre.md#feirante) com nome, CPF, produto e telefone.
 - **Incluída**
 - **Atores:** Secretaria Municipal
 - **Frequência:** Alta
@@ -90,7 +90,7 @@ O sistema apoiará a Secretaria na organização das feiras, cadastro e controle
 - **Valor:** Alto
 
 #### F2.2 Controle de barracas por feirante
-- **Descrição:** Permite associar uma [barraca](glossario-feira-livre.md#barraca) a cada [feirante](glossario-feira-livre.md#feirante) por feira.
+- **Descrição:** Permite associar uma [barraca](../glossario-feira-livre.md#barraca) a cada [feirante](../glossario-feira-livre.md#feirante) por feira.
 - **Incluída**
 - **Atores:** Secretaria Municipal
 - **Frequência:** Alta
@@ -156,14 +156,83 @@ O sistema apoiará a Secretaria na organização das feiras, cadastro e controle
 
 O sistema será composto por módulos de Cadastro de Feirantes, Gestão de Feiras, Controle de Barracas, Pagamento de Taxas, Relatórios e Fiscalização. Utilizará banco de dados relacional e será acessível via navegadores web modernos. Integração com sistemas da prefeitura para validação de licenças e hospedagem em servidores próprios.
 
-### Artefatos visuais
+### Diagrama de Caso de Uso
 
-- [Diagrama de caso de uso (Mermaid)](diagrama-caso-uso-feira-livre.mmd)
-- ![Diagrama de caso de uso](diagrama-caso-uso-feira-livre.png)
-- [Mapa de histórias de usuário (Mermaid)](mapa-historias-feira-livre.mmd)
-- ![Mapa de histórias de usuário](mapa-historias-feira-livre.png)
+```mermaid
+flowchart LR
+  SM(["👤 Secretaria\nMunicipal"])
+  F(["👤 Feirante"])
+  FI(["👤 Fiscal"])
 
-Visualize os arquivos .mmd em ferramentas compatíveis com Mermaid ou utilize as imagens acima para apresentação e documentação.
+  subgraph SistemaSecretaria["Secretaria Municipal"]
+    UC1(["Cadastrar Feirante"])
+    UC2(["Atualizar/Remover Feirante"])
+    UC3(["Registrar Feira"])
+    UC4(["Associar Barraca a Feirante"])
+    UC5(["Registrar Pagamento de Taxa"])
+    UC6(["Gerar Relatórios"])
+    UC7(["Emitir Licença"])
+    UC8(["Autenticar Usuário"])
+    UC9(["Consultar Histórico de Alterações"])
+    UC10(["Configurar Feira"])
+  end
+
+  subgraph SistemaFeirante["Feirante"]
+    UC11(["Pagar Taxa"])
+    UC12(["Solicitar Licença"])
+    UC13(["Consultar Próxima Feira"])
+  end
+
+  subgraph SistemaFiscal["Fiscal"]
+    UC14(["Consultar Feirantes Autorizados"])
+  end
+
+  SM --> UC1
+  SM --> UC2
+  SM --> UC3
+  SM --> UC4
+  SM --> UC5
+  SM --> UC6
+  SM --> UC7
+  SM --> UC8
+  SM --> UC9
+  SM --> UC10
+
+  F --> UC11
+  F --> UC12
+  F --> UC13
+
+  FI --> UC14
+  FI --> UC8
+
+  UC12 -. include .-> UC1
+  UC5 -. include .-> UC11
+```
+
+### Mapa de Histórias de Usuário
+
+```mermaid
+journey
+    title Mapa de Histórias de Usuário — Feira Livre
+    section Secretaria Municipal
+      Cadastrar feirante: 5
+      Atualizar/remover feirante: 4
+      Registrar feira: 4
+      Associar barraca a feirante: 4
+      Registrar pagamento de taxa: 4
+      Gerar relatórios: 3
+      Emitir licença: 4
+      Autenticar usuário: 5
+      Consultar histórico de alterações: 3
+      Configurar feira: 3
+    section Feirante
+      Solicitar licença: 5
+      Pagar taxa: 5
+      Consultar próxima feira: 3
+    section Fiscal
+      Consultar feirantes autorizados: 5
+      Autenticar usuário: 5
+```
 
 ---
 
@@ -180,4 +249,4 @@ Visualize os arquivos .mmd em ferramentas compatíveis com Mermaid ou utilize as
 
 ---
 
-> Consulte exemplos e dicas em: [Guia de Elaboração da Visão](../../Elicitacao/VisaoDemanda.md)
+> Consulte exemplos e dicas em: [Guia de Elaboração da Visão](../../../Elicitacao/VisaoDemanda.md)
