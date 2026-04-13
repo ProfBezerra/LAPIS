@@ -4,17 +4,26 @@
 
 ## Sumário
 
-- [Pré-requisitos](#pré-requisitos)
-- [Variáveis do grupo](#variáveis-do-grupo)
-- [Importar labels, milestones e issues](#importar-labels-milestones-e-issues)
-- [Configurar sprints e sincronizar Project](#configurar-sprints-e-sincronizar-project)
-- [Criar view Kanban (manual)](#criar-view-kanban-manual)
-- [Checklist rápido](#checklist-rápido)
-- [Troubleshooting](#troubleshooting)
-- [Segurança](#segurança)
-- [Bloco rápido (copiar e colar)](#bloco-rápido-copiar-e-colar)
-- [Uso em sala (professor)](#uso-em-sala-professor)
-- [Próxima aula: Gestão de Configuração](#próxima-aula-gestão-de-configuração)
+- [Tutorial: Configuração de Issues, Milestones, Sprints e Kanban por Grupo](#tutorial-configuração-de-issues-milestones-sprints-e-kanban-por-grupo)
+  - [Sumário](#sumário)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Como criar um Personal Access Token (PAT)](#como-criar-um-personal-access-token-pat)
+  - [Variáveis do grupo](#variáveis-do-grupo)
+  - [Importar labels, milestones e issues](#importar-labels-milestones-e-issues)
+  - [Configurar sprints e sincronizar Project](#configurar-sprints-e-sincronizar-project)
+    - [Primeira execução (criação automática de sprints)](#primeira-execução-criação-automática-de-sprints)
+    - [Re-sincronização (quando o JSON mudar)](#re-sincronização-quando-o-json-mudar)
+  - [Criar view Kanban (manual)](#criar-view-kanban-manual)
+  - [Checklist rápido](#checklist-rápido)
+  - [Troubleshooting](#troubleshooting)
+  - [Segurança](#segurança)
+  - [Bloco rápido (copiar e colar)](#bloco-rápido-copiar-e-colar)
+  - [Uso em sala (professor)](#uso-em-sala-professor)
+  - [Próxima aula: Gestão de Configuração (projeto de requisitos)](#próxima-aula-gestão-de-configuração-projeto-de-requisitos)
+    - [Entregáveis](#entregáveis)
+    - [Fluxo recomendado](#fluxo-recomendado)
+    - [Critérios de qualidade](#critérios-de-qualidade)
+    - [Comandos úteis](#comandos-úteis)
 
 ---
 
@@ -157,6 +166,8 @@ Colunas recomendadas (campo `Status`):
 - `Em Progresso`
 - `Em Revisão`
 - `Concluído`
+
+![Imagem GITHUB Project](./image/TUTORIAL_GITHUB_PROJECTS/1776018798953.png?version%3D1776039825899)
 
 ---
 
