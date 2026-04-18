@@ -50,7 +50,7 @@ Você pode seguir **um de dois fluxos**:
 
 Baixe o arquivo `lapis-setup.zip` diretamente do repositório — ele contém `setup-project.ps1` e `issues_github.json` prontos para uso:
 
-- **Link:** [lapis-setup.zip](https://github.com/gitserpro/lapis/raw/main/lapis-setup.zip)
+- **Link:** [lapis-setup.zip](https://github.com/ProfBezerra/lapis/raw/main/lapis-setup.zip)
 
 Após baixar, descompacte em qualquer pasta e execute:
 
