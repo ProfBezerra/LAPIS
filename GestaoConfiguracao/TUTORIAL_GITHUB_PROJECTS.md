@@ -7,16 +7,18 @@
 - [Tutorial: Configuração de Issues, Milestones, Sprints e Kanban por Grupo](#tutorial-configuração-de-issues-milestones-sprints-e-kanban-por-grupo)
   - [Sumário](#sumário)
   - [Pré-requisitos](#pré-requisitos)
+  - [Download rápido (ZIP)](#download-rápido-zip)
   - [Fluxos de execução](#fluxos-de-execução)
     - [Fluxo A (com cópia para o repositório do grupo)](#fluxo-a-com-cópia-para-o-repositório-do-grupo)
     - [Fluxo B (sem alterar o repositório do grupo)](#fluxo-b-sem-alterar-o-repositório-do-grupo)
   - [Como criar um Personal Access Token (PAT)](#como-criar-um-personal-access-token-pat)
   - [Variáveis do grupo](#variáveis-do-grupo)
   - [Baixar scripts direto do GitHub (sem clonar)](#baixar-scripts-direto-do-github-sem-clonar)
-  - [Importar labels, milestones e issues](#importar-labels-milestones-e-issues)
-  - [Configurar sprints e sincronizar Project](#configurar-sprints-e-sincronizar-project)
-    - [Primeira execução (criação automática de sprints)](#primeira-execução-criação-automática-de-sprints)
+  - [Setup completo em um único script](#setup-completo-em-um-único-script)
+    - [Primeira execução (com criação automática de sprints)](#primeira-execução-com-criação-automática-de-sprints)
     - [Re-sincronização (quando o JSON mudar)](#re-sincronização-quando-o-json-mudar)
+    - [Teste (dry-run)](#teste-dry-run)
+  - [Scripts individuais (referência)](#scripts-individuais-referência)
   - [Windows: quando o PowerShell não é reconhecido](#windows-quando-o-powershell-não-é-reconhecido)
   - [Criar view Kanban (manual)](#criar-view-kanban-manual)
   - [Checklist rápido](#checklist-rápido)
@@ -44,15 +46,48 @@ Você pode seguir **um de dois fluxos**:
 
 ---
 
+## Download rápido (ZIP)
+
+Baixe o arquivo `lapis-setup.zip` diretamente do repositório — ele contém `setup-project.ps1` e `issues_github.json` prontos para uso:
+
+- **Link:** [lapis-setup.zip](https://github.com/gitserpro/lapis/raw/main/lapis-setup.zip)
+
+Após baixar, descompacte em qualquer pasta e execute:
+
+```powershell
+$env:GITHUB_TOKEN = "SEU_TOKEN_AQUI"
+
+Set-Location "PASTA_ONDE_DESCOMPACTOU"
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+& .\setup-project.ps1 `
+  -Owner SEU_USUARIO_GITHUB `
+  -Repo SEU_REPOSITORIO `
+  -ProjectNumber 1 `
+  -Token $env:GITHUB_TOKEN `
+  -AutoCreateIterationField `
+  -IterationFieldName "Sprint" `
+  -IterationStartDate "2026-04-13" `
+  -IterationDuration 14 `
+  -IterationCount 5
+```
+
+> **Nota:** o ZIP não precisa estar dentro de um repositório Git — funciona em qualquer pasta local.
+
+---
+
 ## Fluxos de execução
+
+O script `setup-project.ps1` realiza as duas etapas (importação e sincronização) em um único comando, simplificando o processo.
 
 ### Fluxo A (com cópia para o repositório do grupo)
 
 O repositório do grupo contém:
 
-- `scripts/import-github-issues.ps1`
-- `scripts/sync-project-sprints.ps1`
-- `GestaoConfiguracao/issues_github.json`
+- `scripts/setup-project.ps1`
+- `scripts/import-github-issues.ps1` (referência)
+- `scripts/sync-project-sprints.ps1` (referência)
+- `scripts/issues_github.json`
 
 ### Fluxo B (sem alterar o repositório do grupo)
 
@@ -60,14 +95,13 @@ Você baixa os arquivos da branch `main` do repositório base para uma pasta loc
 
 Arquivos necessários:
 
-- `scripts/import-github-issues.ps1`
-- `scripts/sync-project-sprints.ps1`
-- `GestaoConfiguracao/issues_github.json`
+- `scripts/setup-project.ps1`
+- `scripts/issues_github.json`
 
 Links diretos (exemplo atual `gitserpro/lapis`):
 
 - Pasta de scripts: [https://github.com/ProfBezerra/LAPIS/tree/main/scripts](https://github.com/ProfBezerra/LAPIS/tree/main/scripts)
-- JSON de issues: [https://github.com/ProfBezerra/lapis/blob/main/GestaoConfiguracao/issues_github.json](https://github.com/ProfBezerra/lapis/blob/main/GestaoConfiguracao/issues_github.json)
+- JSON de issues: [https://github.com/ProfBezerra/lapis/blob/main/scripts/issues_github.json](https://github.com/ProfBezerra/lapis/blob/main/scripts/issues_github.json)
 
 Se o repositório base for outro, troque `gitserpro/lapis` e a branch `main` nos links.
 
@@ -135,7 +169,7 @@ Use esta seção apenas no **Fluxo B**.
 
 1. Ajuste as variáveis abaixo para o repositório que contém os scripts base.
 2. Os arquivos serão baixados para uma pasta temporária.
-3. A execução dos scripts será feita nessa pasta, sem alterar o repositório do grupo.
+3. A execução do script será feita nessa pasta, sem alterar o repositório do grupo.
 
 ```powershell
 $BASE_OWNER = "gitserpro"
@@ -144,47 +178,27 @@ $BASE_BRANCH = "main"
 
 $WORK_DIR = Join-Path $env:TEMP "lapis-gh-project-setup"
 New-Item -ItemType Directory -Force -Path "$WORK_DIR/scripts" | Out-Null
-New-Item -ItemType Directory -Force -Path "$WORK_DIR/GestaoConfiguracao" | Out-Null
 
 $baseRaw = "https://raw.githubusercontent.com/$BASE_OWNER/$BASE_REPO/$BASE_BRANCH"
-Invoke-WebRequest "$baseRaw/scripts/import-github-issues.ps1" -OutFile "$WORK_DIR/scripts/import-github-issues.ps1"
-Invoke-WebRequest "$baseRaw/scripts/sync-project-sprints.ps1" -OutFile "$WORK_DIR/scripts/sync-project-sprints.ps1"
-Invoke-WebRequest "$baseRaw/GestaoConfiguracao/issues_github.json" -OutFile "$WORK_DIR/GestaoConfiguracao/issues_github.json"
+Invoke-WebRequest "$baseRaw/scripts/setup-project.ps1" -OutFile "$WORK_DIR/scripts/setup-project.ps1"
+Invoke-WebRequest "$baseRaw/scripts/issues_github.json" -OutFile "$WORK_DIR/scripts/issues_github.json"
 
 Set-Location $WORK_DIR
 ```
 
 ---
 
-## Importar labels, milestones e issues
+## Setup completo em um único script
 
-1. Teste (dry-run):
+O script `setup-project.ps1` executa os dois passos automaticamente:
 
-```powershell
-& .\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN -DryRun
-```
+1. Importa labels, milestones e issues
+2. Configura sprints e sincroniza o Project
 
-2. Execução real:
-
-```powershell
-& .\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN
-```
-
-O script:
-
-- cria labels ausentes
-- cria milestones ausentes
-- cria issues a partir do JSON
-- evita duplicidade por título
-
----
-
-## Configurar sprints e sincronizar Project
-
-### Primeira execução (criação automática de sprints)
+### Primeira execução (com criação automática de sprints)
 
 ```powershell
-& .\scripts\sync-project-sprints.ps1 `
+& .\scripts\setup-project.ps1 `
   -Owner $GRUPO_OWNER `
   -Repo $GRUPO_REPO `
   -ProjectNumber $PROJECT_NUMBER `
@@ -199,16 +213,46 @@ O script:
 
 O que acontece:
 
-1. Cria o campo `Iteration` no Project (se não existir).
-2. Gera `Sprint 1` a `Sprint 5` com as datas/configuração informadas.
-3. Adiciona as issues do repositório ao Project.
-4. Atribui a sprint correta a cada issue, conforme o JSON.
+1. Cria labels e milestones ausentes.
+2. Cria issues a partir do JSON, evitando duplicidades.
+3. Cria o campo `Iteration` no Project (se não existir).
+4. Gera `Sprint 1` a `Sprint 5` com as datas/configuração informadas.
+5. Adiciona as issues do repositório ao Project.
+6. Atribui a sprint correta a cada issue, conforme o JSON.
 
 ### Re-sincronização (quando o JSON mudar)
 
 ```powershell
-& .\scripts\sync-project-sprints.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN
+& .\scripts\setup-project.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN
 ```
+
+### Teste (dry-run)
+
+Para visualizar o que seria feito sem aplicar mudanças:
+
+```powershell
+& .\scripts\setup-project.ps1 `
+  -Owner $GRUPO_OWNER `
+  -Repo $GRUPO_REPO `
+  -ProjectNumber $PROJECT_NUMBER `
+  -ProjectOwner $PROJECT_OWNER `
+  -Token $env:GITHUB_TOKEN `
+  -AutoCreateIterationField `
+  -IterationFieldName "Sprint" `
+  -IterationStartDate "2026-04-13" `
+  -IterationDuration 14 `
+  -IterationCount 5 `
+  -DryRun
+```
+
+---
+
+## Scripts individuais (referência)
+
+Se preferir executar os passos separadamente, use:
+
+- `scripts/import-github-issues.ps1` — importa labels, milestones e issues
+- `scripts/sync-project-sprints.ps1` — configura sprints e sincroniza o Project
 
 ---
 
@@ -280,10 +324,8 @@ Colunas recomendadas (campo `Status`):
 
 - [ ] Token criado com `repo` e `project`
 - [ ] Variáveis do grupo preenchidas
-- [ ] Escolhido o fluxo A ou B
-- [ ] (Fluxo B) scripts e JSON baixados para pasta local
-- [ ] Importação de issues executada
-- [ ] Sincronização de sprints executada
+- [ ] Escolhido o método: ZIP, Fluxo A ou Fluxo B
+- [ ] Script `setup-project.ps1` executado
 - [ ] View Kanban criada e colunas ajustadas
 
 ---
@@ -324,16 +366,12 @@ $PROJECT_NUMBER = 1
 # $BASE_BRANCH = "main"
 # $WORK_DIR = Join-Path $env:TEMP "lapis-gh-project-setup"
 # New-Item -ItemType Directory -Force -Path "$WORK_DIR/scripts" | Out-Null
-# New-Item -ItemType Directory -Force -Path "$WORK_DIR/GestaoConfiguracao" | Out-Null
 # $baseRaw = "https://raw.githubusercontent.com/$BASE_OWNER/$BASE_REPO/$BASE_BRANCH"
-# Invoke-WebRequest "$baseRaw/scripts/import-github-issues.ps1" -OutFile "$WORK_DIR/scripts/import-github-issues.ps1"
-# Invoke-WebRequest "$baseRaw/scripts/sync-project-sprints.ps1" -OutFile "$WORK_DIR/scripts/sync-project-sprints.ps1"
-# Invoke-WebRequest "$baseRaw/GestaoConfiguracao/issues_github.json" -OutFile "$WORK_DIR/GestaoConfiguracao/issues_github.json"
+# Invoke-WebRequest "$baseRaw/scripts/setup-project.ps1" -OutFile "$WORK_DIR/scripts/setup-project.ps1"
+# Invoke-WebRequest "$baseRaw/scripts/issues_github.json" -OutFile "$WORK_DIR/scripts/issues_github.json"
 # Set-Location $WORK_DIR
 
-& .\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN
-
-& .\scripts\sync-project-sprints.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN -AutoCreateIterationField -IterationFieldName "Sprint" -IterationStartDate "2026-04-13" -IterationDuration 14 -IterationCount 5
+& .\scripts\setup-project.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN -AutoCreateIterationField -IterationFieldName "Sprint" -IterationStartDate "2026-04-13" -IterationDuration 14 -IterationCount 5
 ```
 
 ---
@@ -346,10 +384,10 @@ Sugestão de condução:
 2. Cada grupo cria seu repositório e Project.
 3. Escolham um fluxo:
 
-- Fluxo A: copiam scripts e JSON para o repositório do grupo.
-- Fluxo B: baixam scripts e JSON para pasta temporária local.
+- Fluxo A: copiam `setup-project.ps1` e `issues_github.json` para a pasta `scripts` do repositório do grupo.
+- Fluxo B: baixam os arquivos para pasta temporária local.
 
-4. Executam as seções **Variáveis**, **Importar** e **Sincronizar**.
+4. Executam o comando `setup-project.ps1` com os parâmetros do grupo.
 5. Validam com o checklist acima.
 
 Resultados esperados:
