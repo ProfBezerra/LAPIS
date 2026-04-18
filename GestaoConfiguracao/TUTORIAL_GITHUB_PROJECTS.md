@@ -68,8 +68,8 @@ Links diretos (exemplo atual `gitserpro/lapis`):
 
 - Pasta de scripts: [https://github.com/ProfBezerra/LAPIS/tree/main/scripts](https://github.com/ProfBezerra/LAPIS/tree/main/scripts)
 - JSON de issues: [https://github.com/ProfBezerra/lapis/blob/main/GestaoConfiguracao/issues_github.json](https://github.com/ProfBezerra/lapis/blob/main/GestaoConfiguracao/issues_github.json)
-- Download raw `import-github-issues.ps1`:  [https://raw.githubusercontent.com/ProfBezerra/LAPIS/blob/main/scripts/import-github-issues.ps1](https://raw.githubusercontent.com/ProfBezerra/LAPIS/blob/main/scripts/import-github-issues.ps1)
-- Download raw `sync-project-sprints.ps1`: [https://raw.githubusercontent.com/ProfBezerra/LAPIS/blob/main/scripts/sync-project-sprints.ps1](https://raw.githubusercontent.com/ProfBezerra/LAPIS/blob/main/scripts/sync-project-sprints.ps1)
+- Download raw `import-github-issues.ps1`:  [https://raw.githubusercontent.com/ProfBezerra/LAPIS/main/scripts/import-github-issues.ps1](https://raw.githubusercontent.com/ProfBezerra/LAPIS/main/scripts/import-github-issues.ps1)
+- Download raw `sync-project-sprints.ps1`: [https://raw.githubusercontent.com/ProfBezerra/lapis/main/scripts/sync-project-sprints.ps1](https://raw.githubusercontent.com/ProfBezerra/LAPIS/main/scripts/sync-project-sprints.ps1)
 - Download raw `issues_github.json`: [https://raw.githubusercontent.com/ProfBezerra/lapis/main/GestaoConfiguracao/issues_github.json](https://raw.githubusercontent.com/ProfBezerra/lapis/main/GestaoConfiguracao/issues_github.json)
 
 Se o repositório base for outro, troque `gitserpro/lapis` e a branch `main` nos links.
