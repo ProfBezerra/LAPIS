@@ -7,12 +7,17 @@
 - [Tutorial: Configuração de Issues, Milestones, Sprints e Kanban por Grupo](#tutorial-configuração-de-issues-milestones-sprints-e-kanban-por-grupo)
   - [Sumário](#sumário)
   - [Pré-requisitos](#pré-requisitos)
+  - [Fluxos de execução](#fluxos-de-execução)
+    - [Fluxo A (com cópia para o repositório do grupo)](#fluxo-a-com-cópia-para-o-repositório-do-grupo)
+    - [Fluxo B (sem alterar o repositório do grupo)](#fluxo-b-sem-alterar-o-repositório-do-grupo)
   - [Como criar um Personal Access Token (PAT)](#como-criar-um-personal-access-token-pat)
   - [Variáveis do grupo](#variáveis-do-grupo)
+  - [Baixar scripts direto do GitHub (sem clonar)](#baixar-scripts-direto-do-github-sem-clonar)
   - [Importar labels, milestones e issues](#importar-labels-milestones-e-issues)
   - [Configurar sprints e sincronizar Project](#configurar-sprints-e-sincronizar-project)
     - [Primeira execução (criação automática de sprints)](#primeira-execução-criação-automática-de-sprints)
     - [Re-sincronização (quando o JSON mudar)](#re-sincronização-quando-o-json-mudar)
+  - [Windows: quando o PowerShell não é reconhecido](#windows-quando-o-powershell-não-é-reconhecido)
   - [Criar view Kanban (manual)](#criar-view-kanban-manual)
   - [Checklist rápido](#checklist-rápido)
   - [Troubleshooting](#troubleshooting)
@@ -31,10 +36,43 @@
 
 - PowerShell (Windows)
 - Token GitHub com permissões: **`repo`** (se for privado) e **`project`**
-- O repositório do grupo deve conter:
-  - `scripts/import-github-issues.ps1`
-  - `scripts/sync-project-sprints.ps1`
-  - `GestaoConfiguracao/issues_github.json`
+
+Você pode seguir **um de dois fluxos**:
+
+- Fluxo A: copiar scripts/JSON para o repositório do grupo.
+- Fluxo B: executar localmente sem alterar o repositório do grupo (baixando do GitHub no momento da execução).
+
+---
+
+## Fluxos de execução
+
+### Fluxo A (com cópia para o repositório do grupo)
+
+O repositório do grupo contém:
+
+- `scripts/import-github-issues.ps1`
+- `scripts/sync-project-sprints.ps1`
+- `GestaoConfiguracao/issues_github.json`
+
+### Fluxo B (sem alterar o repositório do grupo)
+
+Você baixa os arquivos da branch `main` do repositório base para uma pasta local temporária e executa dali.
+
+Arquivos necessários:
+
+- `scripts/import-github-issues.ps1`
+- `scripts/sync-project-sprints.ps1`
+- `GestaoConfiguracao/issues_github.json`
+
+Links diretos (exemplo atual `gitserpro/lapis`):
+
+- Pasta de scripts: [https://github.com/gitserpro/lapis/tree/main/scripts](https://github.com/gitserpro/lapis/tree/main/scripts)
+- JSON de issues: [https://github.com/gitserpro/lapis/blob/main/GestaoConfiguracao/issues_github.json](https://github.com/gitserpro/lapis/blob/main/GestaoConfiguracao/issues_github.json)
+- Download raw `import-github-issues.ps1`: [https://raw.githubusercontent.com/gitserpro/lapis/main/scripts/import-github-issues.ps1](https://raw.githubusercontent.com/gitserpro/lapis/main/scripts/import-github-issues.ps1)
+- Download raw `sync-project-sprints.ps1`: [https://raw.githubusercontent.com/gitserpro/lapis/main/scripts/sync-project-sprints.ps1](https://raw.githubusercontent.com/gitserpro/lapis/main/scripts/sync-project-sprints.ps1)
+- Download raw `issues_github.json`: [https://raw.githubusercontent.com/gitserpro/lapis/main/GestaoConfiguracao/issues_github.json](https://raw.githubusercontent.com/gitserpro/lapis/main/GestaoConfiguracao/issues_github.json)
+
+Se o repositório base for outro, troque `gitserpro/lapis` e a branch `main` nos links.
 
 ---
 
@@ -75,8 +113,6 @@ $GRUPO_OWNER = "SEU_USUARIO_GITHUB"
 $GRUPO_REPO = "SEU_REPOSITORIO"
 $PROJECT_OWNER = "SEU_USUARIO_GITHUB"
 $PROJECT_NUMBER = 1
-
-Set-Location "CAMINHO_LOCAL_DO_REPOSITORIO"
 ```
 
 Exemplo:
@@ -88,6 +124,39 @@ $PROJECT_OWNER = "joao-silva"
 $PROJECT_NUMBER = 2
 ```
 
+Se estiver usando o **Fluxo A**, entre na pasta do repositório do grupo:
+
+```powershell
+Set-Location "CAMINHO_LOCAL_DO_REPOSITORIO"
+```
+
+---
+
+## Baixar scripts direto do GitHub (sem clonar)
+
+Use esta seção apenas no **Fluxo B**.
+
+1. Ajuste as variáveis abaixo para o repositório que contém os scripts base.
+2. Os arquivos serão baixados para uma pasta temporária.
+3. A execução dos scripts será feita nessa pasta, sem alterar o repositório do grupo.
+
+```powershell
+$BASE_OWNER = "gitserpro"
+$BASE_REPO = "lapis"
+$BASE_BRANCH = "main"
+
+$WORK_DIR = Join-Path $env:TEMP "lapis-gh-project-setup"
+New-Item -ItemType Directory -Force -Path "$WORK_DIR/scripts" | Out-Null
+New-Item -ItemType Directory -Force -Path "$WORK_DIR/GestaoConfiguracao" | Out-Null
+
+$baseRaw = "https://raw.githubusercontent.com/$BASE_OWNER/$BASE_REPO/$BASE_BRANCH"
+Invoke-WebRequest "$baseRaw/scripts/import-github-issues.ps1" -OutFile "$WORK_DIR/scripts/import-github-issues.ps1"
+Invoke-WebRequest "$baseRaw/scripts/sync-project-sprints.ps1" -OutFile "$WORK_DIR/scripts/sync-project-sprints.ps1"
+Invoke-WebRequest "$baseRaw/GestaoConfiguracao/issues_github.json" -OutFile "$WORK_DIR/GestaoConfiguracao/issues_github.json"
+
+Set-Location $WORK_DIR
+```
+
 ---
 
 ## Importar labels, milestones e issues
@@ -95,13 +164,13 @@ $PROJECT_NUMBER = 2
 1. Teste (dry-run):
 
 ```powershell
-.\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN -DryRun
+& .\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN -DryRun
 ```
 
 2. Execução real:
 
 ```powershell
-.\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN
+& .\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN
 ```
 
 O script:
@@ -118,7 +187,7 @@ O script:
 ### Primeira execução (criação automática de sprints)
 
 ```powershell
-.\scripts\sync-project-sprints.ps1 `
+& .\scripts\sync-project-sprints.ps1 `
   -Owner $GRUPO_OWNER `
   -Repo $GRUPO_REPO `
   -ProjectNumber $PROJECT_NUMBER `
@@ -141,7 +210,46 @@ O que acontece:
 ### Re-sincronização (quando o JSON mudar)
 
 ```powershell
-.\scripts\sync-project-sprints.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN
+& .\scripts\sync-project-sprints.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN
+```
+
+---
+
+## Windows: quando o PowerShell não é reconhecido
+
+Se aparecer erro como "powershell nao e reconhecido como um comando interno ou externo", use uma destas opcoes:
+
+1. Abra o terminal correto:
+
+- Menu Iniciar -> Windows PowerShell
+- ou Windows Terminal com perfil PowerShell
+
+2. Execute pelo caminho completo (funciona mesmo sem PATH):
+
+```cmd
+%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Get-Host"
+```
+
+3. Se voce tiver PowerShell 7 instalado, pode usar:
+
+```cmd
+pwsh -NoProfile -Command "Get-Host"
+```
+
+Se o script for bloqueado por politica de execucao, rode no PowerShell atual:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+Isso vale apenas para a sessao atual.
+
+Exemplo de execucao dos scripts a partir do CMD (sem depender do comando `powershell` no PATH):
+
+```cmd
+%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\import-github-issues.ps1 -Owner SEU_USUARIO_GITHUB -Repo SEU_REPOSITORIO -Token SEU_TOKEN_AQUI
+
+%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\sync-project-sprints.ps1 -Owner SEU_USUARIO_GITHUB -Repo SEU_REPOSITORIO -ProjectNumber 1 -ProjectOwner SEU_USUARIO_GITHUB -Token SEU_TOKEN_AQUI
 ```
 
 ---
@@ -175,6 +283,8 @@ Colunas recomendadas (campo `Status`):
 
 - [ ] Token criado com `repo` e `project`
 - [ ] Variáveis do grupo preenchidas
+- [ ] Escolhido o fluxo A ou B
+- [ ] (Fluxo B) scripts e JSON baixados para pasta local
 - [ ] Importação de issues executada
 - [ ] Sincronização de sprints executada
 - [ ] View Kanban criada e colunas ajustadas
@@ -186,6 +296,8 @@ Colunas recomendadas (campo `Status`):
 - **Erro:** `Resource not accessible by personal access token` — Token sem permissão `project`.
 - **Mensagem:** `Sem iteracao correspondente para 'Sprint X'` — A sprint não existe no campo Iteration do Project.
 - **Issues não aparecem no Project:** Verifique `ProjectNumber`, `ProjectOwner` e permissões do token.
+- **Erro:** `'powershell' nao e reconhecido` — abra o Windows PowerShell/Windows Terminal (perfil PowerShell) ou use o executavel completo: `%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe`.
+- **Erro:** `running scripts is disabled on this system` — execute `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` e tente novamente na mesma janela.
 
 ---
 
@@ -205,11 +317,26 @@ $GRUPO_OWNER = "SEU_USUARIO_GITHUB"
 $GRUPO_REPO = "SEU_REPOSITORIO"
 $PROJECT_OWNER = "SEU_USUARIO_GITHUB"
 $PROJECT_NUMBER = 1
-Set-Location "CAMINHO_LOCAL_DO_REPOSITORIO"
 
-.\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN
+# Fluxo A: com arquivos no repositorio do grupo
+# Set-Location "CAMINHO_LOCAL_DO_REPOSITORIO"
 
-.\scripts\sync-project-sprints.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN -AutoCreateIterationField -IterationFieldName "Sprint" -IterationStartDate "2026-04-13" -IterationDuration 14 -IterationCount 5
+# Fluxo B: sem alterar repositorio do grupo
+# $BASE_OWNER = "gitserpro"
+# $BASE_REPO = "lapis"
+# $BASE_BRANCH = "main"
+# $WORK_DIR = Join-Path $env:TEMP "lapis-gh-project-setup"
+# New-Item -ItemType Directory -Force -Path "$WORK_DIR/scripts" | Out-Null
+# New-Item -ItemType Directory -Force -Path "$WORK_DIR/GestaoConfiguracao" | Out-Null
+# $baseRaw = "https://raw.githubusercontent.com/$BASE_OWNER/$BASE_REPO/$BASE_BRANCH"
+# Invoke-WebRequest "$baseRaw/scripts/import-github-issues.ps1" -OutFile "$WORK_DIR/scripts/import-github-issues.ps1"
+# Invoke-WebRequest "$baseRaw/scripts/sync-project-sprints.ps1" -OutFile "$WORK_DIR/scripts/sync-project-sprints.ps1"
+# Invoke-WebRequest "$baseRaw/GestaoConfiguracao/issues_github.json" -OutFile "$WORK_DIR/GestaoConfiguracao/issues_github.json"
+# Set-Location $WORK_DIR
+
+& .\scripts\import-github-issues.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -Token $env:GITHUB_TOKEN
+
+& .\scripts\sync-project-sprints.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN -AutoCreateIterationField -IterationFieldName "Sprint" -IterationStartDate "2026-04-13" -IterationDuration 14 -IterationCount 5
 ```
 
 ---
@@ -220,7 +347,11 @@ Sugestão de condução:
 
 1. Compartilhe este repositório como base para a turma.
 2. Cada grupo cria seu repositório e Project.
-3. Copiam os scripts e o JSON para o repositório do grupo.
+3. Escolham um fluxo:
+
+- Fluxo A: copiam scripts e JSON para o repositório do grupo.
+- Fluxo B: baixam scripts e JSON para pasta temporária local.
+
 4. Executam as seções **Variáveis**, **Importar** e **Sincronizar**.
 5. Validam com o checklist acima.
 
