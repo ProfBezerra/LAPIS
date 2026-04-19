@@ -9,42 +9,11 @@
 
 ## Histórico de Versões
 
-<table border="1" width="100%">
-<colgroup>
-    <col style="width: 12%" />
-    <col style="width: 8%" />
-    <col style="width: 66%" />
-    <col style="width: 12%" />
-</colgroup>
-<thead>
-    <tr>
-        <th style="text-align: center;"><strong>Data</strong></th>
-        <th style="text-align: center;"><strong>Versão</strong></th>
-        <th style="text-align: center;"><strong>Descrição</strong></th>
-        <th style="text-align: center;"><strong>Autor</strong></th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td><dd/mm/aaaa></td>
-        <td><x.x></td>
-        <td><identificar a demanda e uma descrição sumária do que ocasionou a criação/mudança do artefato></td>
-        <td><nome do autor></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</tbody>
-</table>
+| Data | Versão | Descrição | Autor |
+| --- | --- | --- | --- |
+| dd/mm/aaaa | x.x | identificar a demanda e uma descrição sumária do que ocasionou a criação/mudança do artefato | nome do autor |
+|  |  |  |  |
+|  |  |  |  |
 
 ## 1. Objetivo
 

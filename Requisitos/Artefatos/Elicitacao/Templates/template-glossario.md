@@ -18,6 +18,14 @@
 | SRE         | Site Reliability Engineering, prática de engenharia de confiabilidade.      | Google SRE Book                  |
 | NPS         | Net Promoter Score, métrica de satisfação do cliente.                     | Métricas de Negócio            |
 
+## Histórico de Versões
+
+| Data | Versão | Descrição | Autor |
+| --- | --- | --- | --- |
+| dd/mm/aaaa | x.x | criação ou atualização inicial do glossário | nome do autor |
+|  |  |  |  |
+|  |  |  |  |
+
 ## Glossário do Projeto
 
 | Termo/Sigla | Definição | Fonte/Observação |

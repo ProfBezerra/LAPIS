@@ -112,13 +112,28 @@ Se o repositório base for outro, troque `gitserpro/lapis` e a branch `main` nos
 Siga estes passos para gerar um token com as permissões necessárias:
 
 1. No GitHub, clique no seu avatar → **Settings**.
+
+   ![1776552755836](image/TUTORIAL_GITHUB_PROJECTS/1776552755836.png)
 2. No menu lateral, abra **Developer settings** → **Personal access tokens** → **Tokens (classic)**.
+
+   ![1776552845315](image/TUTORIAL_GITHUB_PROJECTS/1776552845315.png)
 3. Clique em **Generate new token (classic)**.
+
+   ![1776552880264](image/TUTORIAL_GITHUB_PROJECTS/1776552880264.png)
+
+   ![1776552938041](image/TUTORIAL_GITHUB_PROJECTS/1776552938041.png)
 4. Informe um **nome/descritivo** e escolha uma **data de expiração** (recomendado).
+
+   ![1776553040261](image/TUTORIAL_GITHUB_PROJECTS/1776553040261.png)
 5. Em **Select scopes**, marque pelo menos:
+
    - `repo` — acesso ao repositório (necessário se o repositório for privado)
    - `project` — necessário para operações em GitHub Projects v2 (use token clássico se precisar de acesso a Projects)
+
+   ![1776553014392](image/TUTORIAL_GITHUB_PROJECTS/1776553014392.png)
 6. Clique em **Generate token** e **copie** o valor gerado — você não poderá vê-lo novamente.
+
+![1776553145868](image/TUTORIAL_GITHUB_PROJECTS/1776553145868.png)
 
 Boas práticas:
 
@@ -302,11 +317,12 @@ Exemplo de execucao dos scripts a partir do CMD (sem depender do comando `powers
 Passos no GitHub UI:
 
 1. Abra o Project do grupo
-2. Clique em **+ New view** → escolha **Board**
-3. Nome: `Kanban`
-4. Em **Column by**, escolha **Status**
-5. Em **Swimlanes**, escolha **Sprint**
-6. Em **Slice by**, opção: **Milestone** (opcional)
+2. Abra **Settings** do Project e ajuste a visibilidade para **Public**
+3. Clique em **+ New view** → escolha **Board**
+4. Nome: `Kanban`
+5. Em **Column by**, escolha **Status**
+6. Em **Swimlanes**, escolha **Sprint**
+7. Em **Slice by**, opção: **Milestone** (opcional)
 
 Colunas recomendadas (campo `Status`):
 
@@ -326,6 +342,7 @@ Colunas recomendadas (campo `Status`):
 - [ ] Variáveis do grupo preenchidas
 - [ ] Escolhido o método: ZIP, Fluxo A ou Fluxo B
 - [ ] Script `setup-project.ps1` executado
+- [ ] Project configurado como público
 - [ ] View Kanban criada e colunas ajustadas
 
 ---

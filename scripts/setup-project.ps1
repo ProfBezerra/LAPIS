@@ -10,7 +10,7 @@ param(
 
     [string]$ProjectOwner = $Owner,
 
-    [string]$JsonPath = "scripts/issues_github.json",
+    [string]$JsonPath = "./issues_github.json",
 
     [string]$Token = $env:GITHUB_TOKEN,
 
