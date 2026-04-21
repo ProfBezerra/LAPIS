@@ -7,20 +7,26 @@
 - [Tutorial: Configuração de Issues, Milestones, Sprints e Kanban por Grupo](#tutorial-configuração-de-issues-milestones-sprints-e-kanban-por-grupo)
   - [Sumário](#sumário)
   - [Pré-requisitos](#pré-requisitos)
-  - [Download rápido (ZIP)](#download-rápido-zip)
+  - [Passos para configuração](#passos-para-configuração)
+  - [1. Criação do Repositorio no GitHUB](#1-criação-do-repositorio-no-github)
+  - [2. Repositorio processo LAPIS](#2-repositorio-processo-lapis)
+  - [3. Criação Project no GITHUB](#3-criação-project-no-github)
+  - [4 Carregar Backlogs do Projeto](#4-carregar-backlogs-do-projeto)
+    - [a) Geração do token de acesso](#a-geração-do-token-de-acesso)
+  - [Como criar um Personal Access Token (PAT)](#como-criar-um-personal-access-token-pat)
   - [Fluxos de execução](#fluxos-de-execução)
     - [Fluxo A (com cópia para o repositório do grupo)](#fluxo-a-com-cópia-para-o-repositório-do-grupo)
     - [Fluxo B (sem alterar o repositório do grupo)](#fluxo-b-sem-alterar-o-repositório-do-grupo)
-  - [Como criar um Personal Access Token (PAT)](#como-criar-um-personal-access-token-pat)
   - [Variáveis do grupo](#variáveis-do-grupo)
   - [Baixar scripts direto do GitHub (sem clonar)](#baixar-scripts-direto-do-github-sem-clonar)
   - [Setup completo em um único script](#setup-completo-em-um-único-script)
+    - [Download rápido (ZIP)](#download-rápido-zip)
     - [Primeira execução (com criação automática de sprints)](#primeira-execução-com-criação-automática-de-sprints)
     - [Re-sincronização (quando o JSON mudar)](#re-sincronização-quando-o-json-mudar)
     - [Teste (dry-run)](#teste-dry-run)
   - [Scripts individuais (referência)](#scripts-individuais-referência)
   - [Windows: quando o PowerShell não é reconhecido](#windows-quando-o-powershell-não-é-reconhecido)
-  - [Criar view Kanban (manual)](#criar-view-kanban-manual)
+  - [Configuração do Kanban ajuste das raias (Manual)](#configuração-do-kanban-ajuste-das-raias-manual)
   - [Checklist rápido](#checklist-rápido)
   - [Troubleshooting](#troubleshooting)
   - [Segurança](#segurança)
@@ -46,68 +52,65 @@ Você pode seguir **um de dois fluxos**:
 
 ---
 
-## Download rápido (ZIP)
+## Passos para configuração
 
-Baixe o arquivo `lapis-setup.zip` diretamente do repositório — ele contém `setup-project.ps1` e `issues_github.json` prontos para uso:
+1. Criar o repositorio no GitHUB e configurar acessos
+2. Acessar o repositorio [https://github.com/ProfBezerra/LAPIS/](https://github.com/ProfBezerra/LAPIS/)
+3. Criar um Project no GITHUB
+4. Carregar os backlog para o projeto criado
 
-- **Link:** [lapis-setup.zip](https://github.com/ProfBezerra/lapis/raw/main/lapis-setup.zip)
+## 1. Criação do Repositorio no GitHUB
 
-Após baixar, descompacte em qualquer pasta e execute:
+* Criar um repositório no GitHub : [https://github.com/new](https://github.com/new)
+* Nomear no padrão:
+  * requisitos-2026-`<NOME DO SEU GRUPO>`
 
-```powershell
-$env:GITHUB_TOKEN = "SEU_TOKEN_AQUI"
+![1776778890148](image/TUTORIAL_GITHUB_PROJECTS/1776778890148.png)
 
-Set-Location "PASTA_ONDE_DESCOMPACTOU"
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+* Adicionar o professor como colaborador  (settings/access):
+  * usuário: profBezerra
 
-& .\setup-project.ps1 `
-  -Owner SEU_USUARIO_GITHUB `
-  -Repo SEU_REPOSITORIO `
-  -ProjectNumber 1 `
-  -Token $env:GITHUB_TOKEN `
-  -AutoCreateIterationField `
-  -IterationFieldName "Sprint" `
-  -IterationStartDate "2026-04-13" `
-  -IterationDuration 14 `
-  -IterationCount 5
-```
+![1776779053754](image/TUTORIAL_GITHUB_PROJECTS/1776779053754.png)
 
-> **Nota:** o ZIP não precisa estar dentro de um repositório Git — funciona em qualquer pasta local.
+## 2. Repositorio processo LAPIS
 
----
+Use o repositório como guia: [https://github.com/ProfBezerra/LAPIS/](https://github.com/ProfBezerra/LAPIS/)
 
-## Fluxos de execução
+Nele você vai encontrar os guias para as atividades a serem feitas e os templates dos documentos a serem preenchidos.
 
-O script `setup-project.ps1` realiza as duas etapas (importação e sincronização) em um único comando, simplificando o processo.
+## 3. Criação Project no GITHUB
 
-### Fluxo A (com cópia para o repositório do grupo)
+Na aba **Projects** clique no botão **+ New projec**t
 
-O repositório do grupo contém:
+![1776779395811](image/TUTORIAL_GITHUB_PROJECTS/1776779395811.png)
 
-- `scripts/setup-project.ps1`
-- `scripts/import-github-issues.ps1` (referência)
-- `scripts/sync-project-sprints.ps1` (referência)
-- `scripts/issues_github.json`
+Selecione a opção **Board**
 
-### Fluxo B (sem alterar o repositório do grupo)
+![1776779477712](image/TUTORIAL_GITHUB_PROJECTS/1776779477712.png)
 
-Você baixa os arquivos da branch `main` do repositório base para uma pasta local temporária e executa dali.
+Depois clique no botão **Create project**
 
-Arquivos necessários:
+![1776779542388](image/TUTORIAL_GITHUB_PROJECTS/1776779542388.png)
 
-- `scripts/setup-project.ps1`
-- `scripts/issues_github.json`
+Será criado o plano conforme figura abaixo:
 
-Links diretos (exemplo atual `gitserpro/lapis`):
+![1776779633819](image/TUTORIAL_GITHUB_PROJECTS/1776779633819.png)
 
-- Pasta de scripts: [https://github.com/ProfBezerra/LAPIS/tree/main/scripts](https://github.com/ProfBezerra/LAPIS/tree/main/scripts)
-- JSON de issues: [https://github.com/ProfBezerra/lapis/blob/main/scripts/issues_github.json](https://github.com/ProfBezerra/lapis/blob/main/scripts/issues_github.json)
+## 4 Carregar Backlogs do Projeto
 
-Se o repositório base for outro, troque `gitserpro/lapis` e a branch `main` nos links.
+Para não precisar digitar os backlog do projeto, foi criado um script para fazer a carga e configuração das sprints e marcos.
 
----
+Seguem os passos
 
-## Como criar um Personal Access Token (PAT)
+* a) Geração do token de acesso
+* b) Execução do script para carga dos backlogs no GITHUB
+* c) Ajustes visuais no Kanban do Project
+
+### a) Geração do token de acesso
+
+Para que o script possa ser executado é necessário que seja criado um token de acesso no GITHUB, onde se encontra o projeto.
+
+#### Como criar um Personal Access Token (PAT)
 
 Siga estes passos para gerar um token com as permissões necessárias:
 
@@ -148,126 +151,98 @@ $env:GITHUB_TOKEN = "SEU_TOKEN_AQUI"
 
 ---
 
-## Variáveis do grupo
+### b) Execução do script
 
-No PowerShell, defina:
+Configurado o token agora é executar o script.
 
-```powershell
-$env:GITHUB_TOKEN = "SEU_TOKEN_AQUI"
-
-$GRUPO_OWNER = "SEU_USUARIO_GITHUB"
-$GRUPO_REPO = "SEU_REPOSITORIO"
-$PROJECT_OWNER = "SEU_USUARIO_GITHUB"
-$PROJECT_NUMBER = 1
-```
-
-Exemplo:
-
-```powershell
-$GRUPO_OWNER = "grupo-a"
-$GRUPO_REPO = "projeto-requisitos-grupo-a"
-$PROJECT_OWNER = "joao-silva"
-$PROJECT_NUMBER = 2
-```
-
-Se estiver usando o **Fluxo A**, entre na pasta do repositório do grupo:
-
-```powershell
-Set-Location "CAMINHO_LOCAL_DO_REPOSITORIO"
-```
-
----
-
-## Baixar scripts direto do GitHub (sem clonar)
-
-Use esta seção apenas no **Fluxo B**.
-
-1. Ajuste as variáveis abaixo para o repositório que contém os scripts base.
-2. Os arquivos serão baixados para uma pasta temporária.
-3. A execução do script será feita nessa pasta, sem alterar o repositório do grupo.
-
-```powershell
-$BASE_OWNER = "gitserpro"
-$BASE_REPO = "lapis"
-$BASE_BRANCH = "main"
-
-$WORK_DIR = Join-Path $env:TEMP "lapis-gh-project-setup"
-New-Item -ItemType Directory -Force -Path "$WORK_DIR/scripts" | Out-Null
-
-$baseRaw = "https://raw.githubusercontent.com/$BASE_OWNER/$BASE_REPO/$BASE_BRANCH"
-Invoke-WebRequest "$baseRaw/scripts/setup-project.ps1" -OutFile "$WORK_DIR/scripts/setup-project.ps1"
-Invoke-WebRequest "$baseRaw/scripts/issues_github.json" -OutFile "$WORK_DIR/scripts/issues_github.json"
-
-Set-Location $WORK_DIR
-```
-
----
-
-## Setup completo em um único script
+#### Setup completo em um único script
 
 O script `setup-project.ps1` executa os dois passos automaticamente:
 
 1. Importa labels, milestones e issues
 2. Configura sprints e sincroniza o Project
 
-### Primeira execução (com criação automática de sprints)
+##### Download rápido (ZIP)
+
+Baixe o arquivo `lapis-setup.zip` diretamente do repositório — ele contém `setup-project.ps1` e `issues_github.json` prontos para uso:
+
+- **Link:** [lapis-setup.zip](https://github.com/ProfBezerra/lapis/raw/main/lapis-setup.zip)
+
+Após baixar, descompacte em qualquer pasta e execute.
+
+Abra um bloco de nota (editor de texto) de cole os valores abaixo, para serem alterados por você.
 
 ```powershell
-& .\scripts\setup-project.ps1 `
-  -Owner $GRUPO_OWNER `
-  -Repo $GRUPO_REPO `
-  -ProjectNumber $PROJECT_NUMBER `
-  -ProjectOwner $PROJECT_OWNER `
+$env:GITHUB_TOKEN = "SEU_TOKEN_AQUI"
+
+Set-Location "."
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+& .\setup-project.ps1 `
+  -Owner SEU_USUARIO_GITHUB `
+  -Repo SEU_REPOSITORIO `
+  -ProjectNumber NUMERO_PROJECT `
   -Token $env:GITHUB_TOKEN `
   -AutoCreateIterationField `
   -IterationFieldName "Sprint" `
-  -IterationStartDate "2026-04-13" `
+  -IterationStartDate "2026-04-20" `
   -IterationDuration 14 `
   -IterationCount 5
 ```
 
-O que acontece:
+> **Nota:** o ZIP não precisa estar dentro de um repositório Git — funciona em qualquer pasta local.
 
-1. Cria labels e milestones ausentes.
-2. Cria issues a partir do JSON, evitando duplicidades.
-3. Cria o campo `Iteration` no Project (se não existir).
-4. Gera `Sprint 1` a `Sprint 5` com as datas/configuração informadas.
-5. Adiciona as issues do repositório ao Project.
-6. Atribui a sprint correta a cada issue, conforme o JSON.
+Substitua as variaveis conforme suas configurações:
 
-### Re-sincronização (quando o JSON mudar)
+* SEU_TOKEN_AQUI - substituir pelo token criado anteriormente
+* SEU_USUARIO_GITHUB - substituir pelo nome do usuário do GITHUB
+* SEU_REPOSITORIO - substituir pelo nome do repositorio criado
+* NUMERO_PROJECT - substituir pelo numero do project criado. Para encontrar esse número, veja na URL que o seu plano foi criado. Depois do  **/projects/** vem esse número. Exemplo: https://github.com/users/mbacefor/projects/**8**/views/1 -  Nesse caso o número do projeto é 8.
 
-```powershell
-& .\scripts\setup-project.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN
-```
+Veja exemplo abaixo:
 
-### Teste (dry-run)
+![1776781225069](image/TUTORIAL_GITHUB_PROJECTS/1776781225069.png)
 
-Para visualizar o que seria feito sem aplicar mudanças:
+Agora abra o terminal do tipo PowerShell. *Menu Iniciar -> Windows PowerShell*
 
-```powershell
-& .\scripts\setup-project.ps1 `
-  -Owner $GRUPO_OWNER `
-  -Repo $GRUPO_REPO `
-  -ProjectNumber $PROJECT_NUMBER `
-  -ProjectOwner $PROJECT_OWNER `
-  -Token $env:GITHUB_TOKEN `
-  -AutoCreateIterationField `
-  -IterationFieldName "Sprint" `
-  -IterationStartDate "2026-04-13" `
-  -IterationDuration 14 `
-  -IterationCount 5 `
-  -DryRun
-```
+Depois use o comando CD para ir para a pasta onde você descompactou os arquivos.
 
----
+![1776781624514](image/TUTORIAL_GITHUB_PROJECTS/1776781624514.png)
 
-## Scripts individuais (referência)
+Por fiz execute os comando no terminal.
 
-Se preferir executar os passos separadamente, use:
+![1776781939522](image/TUTORIAL_GITHUB_PROJECTS/1776781939522.png)
 
-- `scripts/import-github-issues.ps1` — importa labels, milestones e issues
-- `scripts/sync-project-sprints.ps1` — configura sprints e sincroniza o Project
+O resultado final será:
+
+![1776782023221](image/TUTORIAL_GITHUB_PROJECTS/1776782023221.png)
+
+Agora abra o project no GITHUB e veja se os backlogs foram carregados.
+
+![1776782098482](image/TUTORIAL_GITHUB_PROJECTS/1776782098482.png)
+
+### c) Ajustes visuais no Kanban do Project
+
+> A API do GitHub Projects v2 não expõe criação de views por script.
+
+Passos no GitHub UI:
+
+1. Abra o Project do grupo
+2. Abra **Settings** do Project e ajuste a visibilidade para **Public** (Torna o Plano acessivel para todos)
+3. Renomei a View para o Nome: `Kanban`
+4. Em **Column by**, escolha **Status**
+5. Em **Swimlanes**, escolha **Sprint**
+6. Em **Slice by**, opção: **Milestone** (opcional)
+
+Colunas recomendadas (campo `Status`):
+
+- `Backlog`
+- `Planejado`
+- `Em Progresso`
+- `Em Revisão`
+- `Concluído`
+
+![Imagem GITHUB Project](./image/TUTORIAL_GITHUB_PROJECTS/1776018798953.png?version%3D1776039825899)
 
 ---
 
@@ -310,37 +285,11 @@ Exemplo de execucao dos scripts a partir do CMD (sem depender do comando `powers
 
 ---
 
-## Criar view Kanban (manual)
-
-> A API do GitHub Projects v2 não expõe criação de views por script.
-
-Passos no GitHub UI:
-
-1. Abra o Project do grupo
-2. Abra **Settings** do Project e ajuste a visibilidade para **Public**
-3. Clique em **+ New view** → escolha **Board**
-4. Nome: `Kanban`
-5. Em **Column by**, escolha **Status**
-6. Em **Swimlanes**, escolha **Sprint**
-7. Em **Slice by**, opção: **Milestone** (opcional)
-
-Colunas recomendadas (campo `Status`):
-
-- `Backlog`
-- `Planejado`
-- `Em Progresso`
-- `Em Revisão`
-- `Concluído`
-
-![Imagem GITHUB Project](./image/TUTORIAL_GITHUB_PROJECTS/1776018798953.png?version%3D1776039825899)
-
----
-
 ## Checklist rápido
 
 - [ ] Token criado com `repo` e `project`
 - [ ] Variáveis do grupo preenchidas
-- [ ] Escolhido o método: ZIP, Fluxo A ou Fluxo B
+- [ ] Escolhido o método: ZIP
 - [ ] Script `setup-project.ps1` executado
 - [ ] Project configurado como público
 - [ ] View Kanban criada e colunas ajustadas
@@ -365,45 +314,13 @@ Colunas recomendadas (campo `Status`):
 
 ---
 
-## Bloco rápido (copiar e colar)
-
-```powershell
-$env:GITHUB_TOKEN = "SEU_TOKEN_AQUI"
-$GRUPO_OWNER = "SEU_USUARIO_GITHUB"
-$GRUPO_REPO = "SEU_REPOSITORIO"
-$PROJECT_OWNER = "SEU_USUARIO_GITHUB"
-$PROJECT_NUMBER = 1
-
-# Fluxo A: com arquivos no repositorio do grupo
-# Set-Location "CAMINHO_LOCAL_DO_REPOSITORIO"
-
-# Fluxo B: sem alterar repositorio do grupo
-# $BASE_OWNER = "gitserpro"
-# $BASE_REPO = "lapis"
-# $BASE_BRANCH = "main"
-# $WORK_DIR = Join-Path $env:TEMP "lapis-gh-project-setup"
-# New-Item -ItemType Directory -Force -Path "$WORK_DIR/scripts" | Out-Null
-# $baseRaw = "https://raw.githubusercontent.com/$BASE_OWNER/$BASE_REPO/$BASE_BRANCH"
-# Invoke-WebRequest "$baseRaw/scripts/setup-project.ps1" -OutFile "$WORK_DIR/scripts/setup-project.ps1"
-# Invoke-WebRequest "$baseRaw/scripts/issues_github.json" -OutFile "$WORK_DIR/scripts/issues_github.json"
-# Set-Location $WORK_DIR
-
-& .\scripts\setup-project.ps1 -Owner $GRUPO_OWNER -Repo $GRUPO_REPO -ProjectNumber $PROJECT_NUMBER -ProjectOwner $PROJECT_OWNER -Token $env:GITHUB_TOKEN -AutoCreateIterationField -IterationFieldName "Sprint" -IterationStartDate "2026-04-13" -IterationDuration 14 -IterationCount 5
-```
-
----
-
 ## Uso em sala (professor)
 
 Sugestão de condução:
 
 1. Compartilhe este repositório como base para a turma.
 2. Cada grupo cria seu repositório e Project.
-3. Escolham um fluxo:
-
-- Fluxo A: copiam `setup-project.ps1` e `issues_github.json` para a pasta `scripts` do repositório do grupo.
-- Fluxo B: baixam os arquivos para pasta temporária local.
-
+3. Escolha o fluxo do ZIO:
 4. Executam o comando `setup-project.ps1` com os parâmetros do grupo.
 5. Validam com o checklist acima.
 
@@ -421,20 +338,16 @@ Objetivo: estruturar controle de versões e mudanças do artefato de requisitos.
 
 ### Entregáveis
 
-1. Estratégia de branches (ex.: `main`, `develop`, `feature/*`, `hotfix/*`).
-2. Convenção de commits (ex.: Conventional Commits).
-3. Política de baseline por marco (M1, M2, M3).
-4. Processo de controle de mudanças documentado.
-5. Template mínimo de Pull Request.
+1. Convenção de commits (ex.: Conventional Commits).
+2. Política de baseline por marco (M1, M2, M3).
+3. Processo de controle de mudanças documentado.
+4. Template mínimo de Pull Request.
 
 ### Fluxo recomendado
 
-1. Criar branch para alteração de requisito.
-2. Atualizar artefatos (issue, SRS, UML, critérios de aceite).
-3. Abrir Pull Request com justificativa.
-4. Revisar impacto técnico e de negócio.
-5. Aprovar e integrar em `develop`.
-6. Gerar baseline em `main` com tag (ex.: `v1.0-requisitos`).
+1. Atualizar artefatos (issue, SRS, UML, critérios de aceite).
+2. Revisar impacto técnico e de negócio.
+3. Gerar baseline em `main` com tag (ex.: `v1.0-requisitos`).
 
 ### Critérios de qualidade
 
@@ -442,12 +355,3 @@ Objetivo: estruturar controle de versões e mudanças do artefato de requisitos.
 2. Toda issue relevante vinculada a uma milestone.
 3. Alterações críticas com análise de impacto registrada.
 4. Marcos finalizados com tag de baseline.
-
-### Comandos úteis
-
-```powershell
-git checkout -b feature/requisito-123
-git add .
-git commit -m "feat(requisitos): atualiza criterio de aceite da US-123"
-git push -u origin feature/requisito-123
-```

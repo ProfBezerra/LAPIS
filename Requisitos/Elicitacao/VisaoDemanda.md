@@ -78,7 +78,7 @@ Durante a Elicitação da visão de uma demanda nova ou de uma grande mudança d
 - [Visão da solução preenchida (use o template)](../Artefatos/Elicitacao/Templates/template-visao-demanda.md)
 
 ### Utilizados como insumo
-- [Glossário](https://unifica.pages.serpro/artefatos/glossario/)
+- [Glossário](../Artefatos/Elicitacao/Templates/template-glossario.md))
 - Problema definido
 - Protótipo (baixa fidelidade)
 
