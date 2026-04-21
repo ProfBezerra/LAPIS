@@ -87,7 +87,7 @@
       "uml",
       "alta"
     ],
-    "sprint": "Sprint 3"
+    "sprint": "Sprint 2"
   },
   {
     "title": "[US] Criar diagrama de classes",
@@ -97,7 +97,7 @@
       "uml",
       "alta"
     ],
-    "sprint": "Sprint 3"
+    "sprint": "Sprint 2"
   },
   {
     "title": "[US] Criar diagrama de sequência",
@@ -107,7 +107,7 @@
       "uml",
       "media"
     ],
-    "sprint": "Sprint 3"
+    "sprint": "Sprint 2"
   },
   {
     "title": "[US] Estruturar documento SRS",
@@ -117,7 +117,7 @@
       "srs",
       "alta"
     ],
-    "sprint": "Sprint 4"
+    "sprint": "Sprint 3"
   },
   {
     "title": "[US] Documentar requisitos no SRS",
@@ -127,7 +127,7 @@
       "srs",
       "alta"
     ],
-    "sprint": "Sprint 4"
+    "sprint": "Sprint 3"
   },
   {
     "title": "[US] Revisar consistência UML e SRS",
@@ -137,7 +137,7 @@
       "srs",
       "media"
     ],
-    "sprint": "Sprint 4"
+    "sprint": "Sprint 3"
   },
   {
     "title": "[US] Criar wireframes das telas",
@@ -147,7 +147,7 @@
       "prototipo",
       "alta"
     ],
-    "sprint": "Sprint 5"
+    "sprint": "Sprint 3"
   },
   {
     "title": "[US] Criar protótipo navegável",
@@ -157,7 +157,7 @@
       "prototipo",
       "alta"
     ],
-    "sprint": "Sprint 5"
+    "sprint": "Sprint 3"
   },
   {
     "title": "[US] Criar slides do pitch",
@@ -167,7 +167,7 @@
       "pitch",
       "alta"
     ],
-    "sprint": "Sprint 5"
+    "sprint": "Sprint 4"
   },
   {
     "title": "[US] Definir storytelling",
@@ -177,7 +177,7 @@
       "pitch",
       "media"
     ],
-    "sprint": "Sprint 5"
+    "sprint": "Sprint 4"
   },
   {
     "title": "[US] Ensaiar apresentação",
@@ -187,6 +187,6 @@
       "pitch",
       "alta"
     ],
-    "sprint": "Sprint 5"
+    "sprint": "Sprint 4"
   }
 ]
