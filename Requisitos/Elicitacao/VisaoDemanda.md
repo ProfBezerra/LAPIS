@@ -58,7 +58,7 @@ Durante a Elicitação da visão de uma demanda nova ou de uma grande mudança d
 - Relacione cada necessidade a funcionalidades, atores, valor e frequência.
 - Utilize mapas de histórias, diagramas de caso de uso, componentes e implantação para ilustrar a arquitetura.
 
-> **Dica:** Para criar os diagramas UML, utilize as ferramentas [Visual Paradigm Online](https://online.visual-paradigm.com/pt/) ou [Diagrams.net](https://app.diagrams.net/). Ambas são gratuitas e facilitam a criação de diagramas profissionais.
+> **Dica:** Para criar os diagramas UML, utilize as ferramentas [Visual Paradigm Online](https://online.visual-paradigm.com/pt/), [Diagrams.net](https://app.diagrams.net/) ou [Mermaid](https://mermaid.js.org/). Todas são gratuitas e facilitam a criação de diagramas profissionais.
 
 **Exemplo:**
 > Necessidade: Solicitar estágio online
@@ -100,6 +100,7 @@ Consulte exemplos fictícios no próprio template e nos comentários deste guia.
 ### Criação de Diagramas UML
 - [Visual Paradigm Online](https://online.visual-paradigm.com/pt/) — ferramenta completa para UML, com suporte a diagramas de caso de uso, componentes e implantação
 - [Diagrams.net](https://app.diagrams.net/) — editor de diagramas online gratuito e intuitivo
+- [Mermaid](https://mermaid.js.org/) — sintaxe baseada em texto para criar diagramas, ótima para versionamento com Git
 
 
 ## Checklist de Validação do Documento de Visão
