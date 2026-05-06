@@ -103,6 +103,47 @@ Inclua um diagrama simples (pode ser desenhado à mão e digitalizado, ou feito 
 
 Sugestão: utilize mapas de histórias ou diagramas de caso de uso (UML) para ilustrar.
 
+### 7.1. Diagramas UML
+
+Apresente os diagramas que representam a arquitetura e estrutura da solução.
+
+#### 7.1.1. Diagrama de Caso de Uso
+
+Ilustra os atores (usuários e sistemas externos) e as interações principais com a solução.
+
+**Exemplo:**
+> [Insira a imagem do diagrama de caso de uso ou link para o arquivo]
+
+**Descrição dos casos de uso principais:**
+- CU1: Solicitar Estágio
+- CU2: Aprovar Solicitação
+- CU3: Acompanhar Progresso
+
+#### 7.1.2. Diagrama de Componentes
+
+Descreve os principais componentes do sistema e suas dependências.
+
+**Exemplo:**
+> [Insira a imagem do diagrama de componentes ou link para o arquivo]
+
+**Componentes principais:**
+- Portal do Aluno
+- Portal do Professor
+- Módulo Administrativo
+- API de Integração
+
+#### 7.1.3. Diagrama de Implantação
+
+Mostra como os componentes serão distribuídos nos ambientes de execução (servidores, máquinas clientes, nuvem, etc.).
+
+**Exemplo:**
+> [Insira a imagem do diagrama de implantação ou link para o arquivo]
+
+**Ambiente de execução:**
+- Servidor Web (Aplicação)
+- Banco de Dados
+- Servidor de Aplicação
+
 ---
 
 ## Checklist de Validação do Documento de Visão
