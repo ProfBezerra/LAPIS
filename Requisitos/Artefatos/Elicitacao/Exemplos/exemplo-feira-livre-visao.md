@@ -156,7 +156,11 @@ O sistema apoiará a Secretaria na organização das feiras, cadastro e controle
 
 O sistema será composto por módulos de Cadastro de Feirantes, Gestão de Feiras, Controle de Barracas, Pagamento de Taxas, Relatórios e Fiscalização. Utilizará banco de dados relacional e será acessível via navegadores web modernos. Integração com sistemas da prefeitura para validação de licenças e hospedagem em servidores próprios.
 
-### Diagrama de Caso de Uso
+### 7.1. Diagramas UML
+
+#### 7.1.1. Diagrama de Caso de Uso
+
+Ilustra os atores (Secretaria Municipal, Feirante e Fiscal) e suas interações com os principais casos de uso do sistema.
 
 ```mermaid
 flowchart LR
@@ -209,6 +213,129 @@ flowchart LR
   UC5 -. include .-> UC11
 ```
 
+#### 7.1.2. Diagrama de Componentes
+
+Descreve os principais componentes do sistema e suas dependências.
+
+```mermaid
+graph TB
+    subgraph Cliente["🖥️ Cliente - Navegador Web"]
+        UI["Interface de Usuário<br/>HTML/CSS/JavaScript"]
+    end
+    
+    subgraph Servidor["⚙️ Servidor de Aplicação"]
+        Auth["Módulo de<br/>Autenticação"]
+        Cadastro["Módulo de<br/>Cadastro de Feirantes"]
+        Gestao["Módulo de<br/>Gestão de Feiras"]
+        Barracas["Módulo de<br/>Controle de Barracas"]
+        Taxas["Módulo de<br/>Pagamento de Taxas"]
+        Relatorios["Módulo de<br/>Relatórios"]
+        Fiscalizacao["Módulo de<br/>Fiscalização"]
+        Historico["Módulo de<br/>Histórico de Alterações"]
+        API["API REST"]
+    end
+    
+    subgraph Dados["💾 Persistência de Dados"]
+        BD["Banco de Dados<br/>Relacional"]
+    end
+    
+    subgraph Externo["🔗 Sistemas Externos"]
+        Prefeitura["API da Prefeitura<br/>Validação de Licenças"]
+    end
+    
+    UI --> API
+    API --> Auth
+    API --> Cadastro
+    API --> Gestao
+    API --> Barracas
+    API --> Taxas
+    API --> Relatorios
+    API --> Fiscalizacao
+    
+    Auth --> BD
+    Cadastro --> BD
+    Gestao --> BD
+    Barracas --> BD
+    Taxas --> BD
+    Relatorios --> BD
+    Fiscalizacao --> BD
+    Historico --> BD
+    
+    Cadastro --> Historico
+    Barracas --> Historico
+    Taxas --> Historico
+    
+    Cadastro --> Prefeitura
+    Gestao --> Prefeitura
+```
+
+**Componentes principais:**
+- **Interface de Usuário** — Aplicação web responsiva acessível em navegadores modernos
+- **Módulo de Autenticação** — Garante acesso seguro aos usuários
+- **Módulos de Negócio** — Cadastro, Gestão, Barracas, Taxas, Relatórios, Fiscalização
+- **Módulo de Histórico** — Registra todas as alterações nos cadastros
+- **API REST** — Orquestra a comunicação entre cliente e servidor
+- **Banco de Dados Relacional** — Armazena todos os dados do sistema
+- **API da Prefeitura** — Integração para validação de licenças e dados cadastrais
+
+#### 7.1.3. Diagrama de Implantação
+
+Mostra como os componentes serão distribuídos nos ambientes de execução.
+
+```mermaid
+graph TB
+    subgraph Cliente["📱 Camada Cliente"]
+        Browser["🌐 Navegadores Web<br/>Secretaria, Feirantes, Fiscais"]
+    end
+    
+    subgraph Rede["🌐 Rede"]
+        LB["Load Balancer<br/>Distribuição de Tráfego"]
+    end
+    
+    subgraph Servidores["⚙️ Camada de Aplicação"]
+        WS1["Servidor Web 1<br/>Apache/Nginx"]
+        APP1["Servidor App 1<br/>Node.js/Python/Java"]
+        WS2["Servidor Web 2<br/>Apache/Nginx"]
+        APP2["Servidor App 2<br/>Node.js/Python/Java"]
+    end
+    
+    subgraph Dados["💾 Camada de Dados"]
+        BDPRINCIPAL["Banco de Dados Principal<br/>PostgreSQL/MySQL"]
+        BDREPLICA["Banco de Dados Réplica<br/>Backup/HA"]
+    end
+    
+    subgraph Backup["💿 Armazenamento"]
+        Storage["Storage<br/>Backups e Arquivos"]
+    end
+    
+    subgraph Externo["🔗 Integração Externa"]
+        API_Prefeitura["API da Prefeitura<br/>Validação de Licenças"]
+    end
+    
+    Browser -->|HTTP/HTTPS| LB
+    LB --> WS1
+    LB --> WS2
+    WS1 --> APP1
+    WS2 --> APP2
+    APP1 --> BDPRINCIPAL
+    APP2 --> BDPRINCIPAL
+    BDPRINCIPAL --> BDREPLICA
+    APP1 --> Storage
+    APP2 --> Storage
+    APP1 --> API_Prefeitura
+    APP2 --> API_Prefeitura
+```
+
+**Ambiente de execução:**
+- **Camada Cliente** — Navegadores web dos usuários (Secretaria, Feirantes, Fiscais)
+- **Load Balancer** — Distribui requisições entre servidores web
+- **Servidores Web** — Hospedam a aplicação (com redundância)
+- **Servidores de Aplicação** — Processam lógica de negócio (com redundância)
+- **Banco de Dados Principal** — Armazena dados operacionais
+- **Banco de Dados Réplica** — Backup e alta disponibilidade
+- **Storage** — Armazena arquivos e backups do sistema
+- **API da Prefeitura** — Integração externa via HTTPS
+
 ### Mapa de Histórias de Usuário
 
 ```mermaid
@@ -244,7 +371,7 @@ journey
 - [x] Existem pelo menos duas personas descritas?
 - [x] Todas as necessidades e funcionalidades estão relacionadas a atores?
 - [x] Há indicação de valor e frequência para cada funcionalidade?
-- [x] A arquitetura está ilustrada (mesmo que de forma simples)?
+- [x] A arquitetura está ilustrada com os diagramas UML (Caso de Uso, Componentes e Implantação)?
 - [x] O documento está escrito em linguagem clara e objetiva?
 
 ---

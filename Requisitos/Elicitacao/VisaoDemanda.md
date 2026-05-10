@@ -5,7 +5,7 @@
 > 1. Leia este documento antes de iniciar a elaboração da visão de demanda.
 > 2. Sempre utilize o [template de visão](../Artefatos/Elicitacao/Templates/template-visao-demanda.md) para registrar sua demanda.
 > 3. Preencha cada seção com informações claras, objetivas e sem jargões técnicos desnecessários.
-> 4. Consulte os exemplos práticos abaixo e utilize artefatos visuais (mapa de histórias, diagrama de caso de uso) sempre que possível.
+> 4. Consulte os exemplos práticos abaixo e utilize artefatos visuais (mapa de histórias, diagramas UML de caso de uso, componentes e implantação) sempre que possível.
 > 5. Ao final, valide seu documento com o checklist.
 
 Última atualização em 12/04/2026
@@ -56,7 +56,9 @@ Durante a Elicitação da visão de uma demanda nova ou de uma grande mudança d
 
 - Descreva as principais funcionalidades e necessidades.
 - Relacione cada necessidade a funcionalidades, atores, valor e frequência.
-- Utilize mapas de histórias ou diagramas de caso de uso para ilustrar.
+- Utilize mapas de histórias, diagramas de caso de uso, componentes e implantação para ilustrar a arquitetura.
+
+> **Dica:** Para criar os diagramas UML, utilize as ferramentas [Visual Paradigm Online](https://online.visual-paradigm.com/pt/), [Diagrams.net](https://app.diagrams.net/) ou [Mermaid](https://mermaid.js.org/). Todas são gratuitas e facilitam a criação de diagramas profissionais.
 
 **Exemplo:**
 > Necessidade: Solicitar estágio online
@@ -89,9 +91,16 @@ Consulte exemplos fictícios no próprio template e nos comentários deste guia.
 
 
 ## Ferramentas
+
+### Edição e Versionamento
 - [Markdown](https://www.markdownguide.org/getting-started/)
 - [Github](https://github.com/?locale=pt-br)
 - [Visual Studio Code](https://code.visualstudio.com/)
+
+### Criação de Diagramas UML
+- [Visual Paradigm Online](https://online.visual-paradigm.com/pt/) — ferramenta completa para UML, com suporte a diagramas de caso de uso, componentes e implantação
+- [Diagrams.net](https://app.diagrams.net/) — editor de diagramas online gratuito e intuitivo
+- [Mermaid](https://mermaid.js.org/) — sintaxe baseada em texto para criar diagramas, ótima para versionamento com Git
 
 
 ## Checklist de Validação do Documento de Visão
@@ -102,7 +111,7 @@ Consulte exemplos fictícios no próprio template e nos comentários deste guia.
 - [ ] Existem pelo menos duas personas descritas?
 - [ ] Todas as necessidades e funcionalidades estão relacionadas a atores?
 - [ ] Há indicação de valor e frequência para cada funcionalidade?
-- [ ] A arquitetura está ilustrada (mesmo que de forma simples)?
+- [ ] A arquitetura está ilustrada com os diagramas UML (Caso de Uso, Componentes e Implantação)?
 - [ ] O documento está escrito em linguagem clara e objetiva?
 
 ---
