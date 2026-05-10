@@ -10,14 +10,15 @@ Esta pasta reúne os templates oficiais para criação dos principais artefatos 
 
 ## Exemplos Relacionados
 
+- [Exemplo de visão da demanda para feira livre](../../Exemplos/exemplo-feira-livre-visao.md)
+- [Exemplo de proposta para feira livre](../../Exemplos/PropostaFeiraLivre.md)
+- [Exemplo de glossario para feira livre](../../Exemplos/glossario-feira-livre.md)
 - [Exemplo de requisitos nao funcionais para feira livre](../../Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md)
 - [Exemplo didático de requisitos nao funcionais para feira livre](../../Exemplos/exemplo-requisitos-nao-funcionais-feira-livre-didatico.md)
 - [Exemplo de CDU F1.1 Cadastro de feirante](../../Exemplos/exemplo-cdu-f1-1-cadastro-feirante.md)
 - [Exemplo didático de CDU F1.1 Cadastro de feirante](../../Exemplos/exemplo-cdu-f1-1-cadastro-feirante-didatico.md)
 - [Exemplo de CDU F1.3 Emissão de licença do feirante](../../Exemplos/exemplo-cdu-f1-3-emissao-licenca-feirante.md)
-- [Exemplo de visão da demanda para feira livre](../../Exemplos/exemplo-feira-livre-visao.md)
-- [Exemplo de proposta para feira livre](../../Exemplos/PropostaFeiraLivre.md)
-- [Exemplo de glossario para feira livre](../../Exemplos/glossario-feira-livre.md)
+- [Exemplo de regras de negócio para cadastro e licença de feirante](../../Exemplos/exemplo-rn-cadastro-licenca-feirante.md)
 
 ## Guia Relacionado
 
@@ -27,5 +28,8 @@ Esta pasta reúne os templates oficiais para criação dos principais artefatos 
 
 - `template-visao-demanda.md` — Documento de Visão da Demanda
 - `template-glossario.md` — Glossário de Termos do Projeto
+- `template-cdu-caso-uso.md` — Especificação de Caso de Uso com Checklist
+- `template-requisitosNaoFuncionais.md` — Requisitos Não Funcionais com Checklist
+- `template-rn-regra-negocio.md` — Regra de Negócio com Checklist
 
 Mantenha esta pasta organizada e utilize sempre a versão mais atualizada dos templates.
