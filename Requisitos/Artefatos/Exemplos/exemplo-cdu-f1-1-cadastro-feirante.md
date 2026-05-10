@@ -8,6 +8,7 @@
 | Data       | Versão | Descrição                                                           | Autor        |
 | ---------- | ------ | ------------------------------------------------------------------- | ------------ |
 | 09/05/2026 | 1.0    | Criação do exemplo de CDU para a funcionalidade F1.1               | Equipe Lapis |
+| 10/05/2026 | 1.1    | Inclusão de referências explícitas às regras de negócio (RN1-RN6)  | Equipe Lapis |
 <!-- markdownlint-enable MD060 -->
 
 ## 1. Nome do Caso de Uso
@@ -47,10 +48,10 @@ Concreto.
 2. P1.2 - O sistema exibe o formulário de cadastro com os campos obrigatórios.
 3. P1.3 - O ator primário informa os dados do feirante (nome, CPF, telefone e tipo de produto comercializado).
 4. P1.4 - O ator primário confirma a operação de cadastro.
-5. P1.5 - O sistema valida os campos obrigatórios e o formato dos dados informados.
-6. P1.6 - O sistema verifica se já existe cadastro ativo para o CPF informado.
+5. P1.5 - O sistema valida os campos obrigatórios e o formato dos dados informados, conforme [RN1](exemplo-rn-cadastro-licenca-feirante.md#rn1-cadastro-de-feirante-exige-dados-minimos-validos).
+6. P1.6 - O sistema verifica se já existe cadastro ativo para o CPF informado, conforme [RN2](exemplo-rn-cadastro-licenca-feirante.md#rn2-cpf-de-feirante-deve-ser-unico).
 7. P1.7 - Não havendo duplicidade, o sistema grava o novo cadastro de feirante.
-8. P1.8 - O sistema registra a operação no histórico de alterações.
+8. P1.8 - O sistema registra a operação no histórico de alterações, conforme [RN6](exemplo-rn-cadastro-licenca-feirante.md#rn6-operacoes-criticas-devem-ser-auditadas).
 9. P1.9 - O sistema apresenta mensagem de sucesso e disponibiliza o código de identificação do feirante cadastrado.
 
 ## 7. Fluxos Alternativos
@@ -63,14 +64,14 @@ Concreto.
 
 ### A2. Cadastro salvo com licença pendente
 
-1. A2.1 - Após o passo P1.9, o sistema indica que o feirante está cadastrado, porém com licença pendente.
+1. A2.1 - Após o passo P1.9, o sistema indica que o feirante está cadastrado, porém com licença pendente, conforme [RN3](exemplo-rn-cadastro-licenca-feirante.md#rn3-status-inicial-do-cadastro-deve-indicar-licenca-pendente).
 2. A2.2 - O sistema oferece atalho para o processo de emissão de licença.
 
 ## 8. Fluxos de Exceção
 
 ### E1. CPF inválido
 
-1. E1.1 - No passo P1.5, o sistema identifica CPF em formato inválido.
+1. E1.1 - No passo P1.5, o sistema identifica CPF em formato inválido, conforme [RN1](exemplo-rn-cadastro-licenca-feirante.md#rn1-cadastro-de-feirante-exige-dados-minimos-validos).
 2. E1.2 - O sistema bloqueia o salvamento, destaca o campo com erro e exibe mensagem orientando correção.
 3. E1.3 - O fluxo retorna ao passo P1.3.
 
@@ -131,4 +132,5 @@ Tela com campos de identificação do feirante, validação de preenchimento obr
 - [Visão da demanda - sistema de feira livre](exemplo-feira-livre-visao.md)
 - [Glossário - feira livre](glossario-feira-livre.md)
 - [Exemplo de requisitos não funcionais](exemplo-requisitos-nao-funcionais-feira-livre.md)
+- [Exemplo de regras de negócio - cadastro e licença de feirante](exemplo-rn-cadastro-licenca-feirante.md)
 - [CDU F1.3 Emissão de licença do feirante](exemplo-cdu-f1-3-emissao-licenca-feirante.md)

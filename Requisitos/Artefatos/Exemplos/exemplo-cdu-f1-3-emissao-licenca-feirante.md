@@ -9,6 +9,7 @@
 | ---------- | ------ | ---------------------------------------------------------------------------- | ------------ |
 | 09/05/2026 | 1.0    | Criação do exemplo de CDU para emissão de licença como extensão do F1.1     | Equipe Lapis |
 | 09/05/2026 | 1.1    | Detalhamento da IV1 com tabela de campos, formatos e validações             | Equipe Lapis |
+| 10/05/2026 | 1.2    | Inclusão de referências explícitas às regras de negócio (RN4-RN6)           | Equipe Lapis |
 <!-- markdownlint-enable MD060 -->
 
 ## 1. Nome do Caso de Uso
@@ -50,10 +51,10 @@ Concreto (caso de uso de extensão do F1.1 Cadastro de Feirante).
 2. P1.2 - O sistema exibe dados cadastrais do feirante e o status de regularidade.
 3. P1.3 - O ator primário informa os dados da licença (tipo, data de início, data de validade e observações).
 4. P1.4 - O ator primário confirma a emissão.
-5. P1.5 - O sistema valida regras de negócio e consistência dos dados.
+5. P1.5 - O sistema valida regras de negócio e consistência dos dados, conforme [RN4](exemplo-rn-cadastro-licenca-feirante.md#rn4-emissao-de-licenca-exige-cadastro-e-documentacao-regular) e [RN5](exemplo-rn-cadastro-licenca-feirante.md#rn5-vigencia-da-licenca-deve-respeitar-regra-temporal).
 6. P1.6 - O sistema gera o número da licença e grava o registro.
 7. P1.7 - O sistema atualiza o status do feirante para "Licenciado".
-8. P1.8 - O sistema registra a operação no histórico de alterações.
+8. P1.8 - O sistema registra a operação no histórico de alterações, conforme [RN6](exemplo-rn-cadastro-licenca-feirante.md#rn6-operacoes-criticas-devem-ser-auditadas).
 9. P1.9 - O sistema apresenta mensagem de sucesso e disponibiliza comprovante da licença.
 
 ## 7. Fluxos Alternativos
@@ -74,7 +75,7 @@ Concreto (caso de uso de extensão do F1.1 Cadastro de Feirante).
 
 ### E1. Feirante com documentação incompleta
 
-1. E1.1 - Em P1.5, o sistema identifica ausência de documentação obrigatória.
+1. E1.1 - Em P1.5, o sistema identifica ausência de documentação obrigatória, conforme [RN4](exemplo-rn-cadastro-licenca-feirante.md#rn4-emissao-de-licenca-exige-cadastro-e-documentacao-regular).
 2. E1.2 - O sistema bloqueia a emissão da licença.
 3. E1.3 - O sistema exibe pendências e orienta regularização.
 
@@ -140,5 +141,6 @@ Tela com dados do feirante, campos de vigência, situação documental e botão 
 ## 15. Referências
 
 - [CDU F1.1 Cadastro de feirante](exemplo-cdu-f1-1-cadastro-feirante.md)
+- [Exemplo de regras de negócio - cadastro e licença de feirante](exemplo-rn-cadastro-licenca-feirante.md)
 - [Visão da demanda - sistema de feira livre](exemplo-feira-livre-visao.md)
 - [Glossário - feira livre](glossario-feira-livre.md)

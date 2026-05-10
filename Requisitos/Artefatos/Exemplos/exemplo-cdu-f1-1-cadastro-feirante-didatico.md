@@ -24,6 +24,7 @@ Você verá:
 | ---------- | ------ | ------------------------------------------------------------- | ------------ |
 | 09/05/2026 | 1.0    | Criação do exemplo didático de CDU para cadastro de feirante | Equipe Lapis |
 | 09/05/2026 | 1.1    | Inclusão da seção IV1 com tabela de campos e validações      | Equipe Lapis |
+| 10/05/2026 | 1.2    | Inclusão de referência ao documento de regras de negócio     | Equipe Lapis |
 <!-- markdownlint-enable MD060 -->
 
 ## 3. Identificação do Caso de Uso
@@ -145,6 +146,7 @@ Nesta tela, o usuário informa os dados básicos do feirante. A tabela abaixo aj
 ## 14. Referências
 
 - [CDU exemplo completo F1.1](exemplo-cdu-f1-1-cadastro-feirante.md)
+- [Exemplo de regras de negócio - cadastro e licença de feirante](exemplo-rn-cadastro-licenca-feirante.md)
 - [Visão da demanda - feira livre](exemplo-feira-livre-visao.md)
 - [Glossário - feira livre](glossario-feira-livre.md)
 - [Exemplo de RNF - feira livre](exemplo-requisitos-nao-funcionais-feira-livre.md)
