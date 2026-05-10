@@ -56,7 +56,7 @@ Os requisitos não funcionais, também denominados atributos de qualidade, podem
 
 💡**Dicas**
 
-* Para auxiliar na elicitação de RNFS, acesse o [exemplo de especificação de RNFs](../Artefatos/Elicitacao/Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md).
+* Para auxiliar na elicitação de RNFS, acesse o [exemplo de especificação de RNFs](../Artefatos/Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md).
 
 ##### 2. Documente os RNFs
 
@@ -67,7 +67,7 @@ Os requisitos não funcionais, também denominados atributos de qualidade, podem
 * **Objetivo** , isto é, não expressa um desejo, uma meta, ou uma opinião pessoal.
 * **Testável** , isto é, há algum processo pelo qual ele possa ser verificado
 * Geralmente, os RNFs são documentados em linguagem natural, usando texto livre, mas a depender do tipo de RNF e das características técnicas da solução, é necessária uma documentação mais específica, impossibilitando a definição de um padrão de documentação.
-* Para auxiliar na documentação de RNFS, acesse o [exemplo de especificação de RNFs](../Artefatos/Elicitacao/Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md)
+* Para auxiliar na documentação de RNFS, acesse o [exemplo de especificação de RNFs](../Artefatos/Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md)
 
 ## Artefatos
 
@@ -76,7 +76,7 @@ Os requisitos não funcionais, também denominados atributos de qualidade, podem
 
 ## Exemplos
 
-* [Exemplo do artefato de especificação de RNFs preenchido](../Artefatos/Elicitacao/Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md)
+* [Exemplo do artefato de especificação de RNFs preenchido](../Artefatos/Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md)
 
 ## Ferramentas
 

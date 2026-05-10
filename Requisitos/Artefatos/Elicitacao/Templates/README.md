@@ -10,15 +10,18 @@ Esta pasta reúne os templates oficiais para criação dos principais artefatos 
 
 ## Exemplos Relacionados
 
-- [Exemplo de requisitos nao funcionais para feira livre](../Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md)
-- [Exemplo didático de requisitos nao funcionais para feira livre](../Exemplos/exemplo-requisitos-nao-funcionais-feira-livre-didatico.md)
-- [Exemplo de visão da demanda para feira livre](../Exemplos/exemplo-feira-livre-visao.md)
-- [Exemplo de proposta para feira livre](../Exemplos/PropostaFeiraLivre.md)
-- [Exemplo de glossario para feira livre](../Exemplos/glossario-feira-livre.md)
+- [Exemplo de requisitos nao funcionais para feira livre](../../Exemplos/exemplo-requisitos-nao-funcionais-feira-livre.md)
+- [Exemplo didático de requisitos nao funcionais para feira livre](../../Exemplos/exemplo-requisitos-nao-funcionais-feira-livre-didatico.md)
+- [Exemplo de CDU F1.1 Cadastro de feirante](../../Exemplos/exemplo-cdu-f1-1-cadastro-feirante.md)
+- [Exemplo didático de CDU F1.1 Cadastro de feirante](../../Exemplos/exemplo-cdu-f1-1-cadastro-feirante-didatico.md)
+- [Exemplo de CDU F1.3 Emissão de licença do feirante](../../Exemplos/exemplo-cdu-f1-3-emissao-licenca-feirante.md)
+- [Exemplo de visão da demanda para feira livre](../../Exemplos/exemplo-feira-livre-visao.md)
+- [Exemplo de proposta para feira livre](../../Exemplos/PropostaFeiraLivre.md)
+- [Exemplo de glossario para feira livre](../../Exemplos/glossario-feira-livre.md)
 
 ## Guia Relacionado
 
-- [Especificando requisitos não funcionais](../../Requisitos%20Não%20Funcionais/Especificando%20Requisitos%20Não%20Funcionais.md)
+- [Especificando requisitos não funcionais](../../../Requisitos%20N%C3%A3o%20Funcionais/Especificando%20Requisitos%20N%C3%A3o%20Funcionais.md)
 
 ## Templates disponíveis
 

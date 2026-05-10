@@ -6,6 +6,8 @@
 
 ## Histórico de Versões
 
+<!-- markdownlint-disable MD060 -->
+
 | Data       | Versão | Descrição   | Autor         |
 | ---------- | ------- | ------------- | ------------- |
 | dd/mm/aaaa | x.x     | <descrição> | nome do autor |
@@ -14,6 +16,7 @@
 |            |         |               |               |
 |            |         |               |               |
 
+<!-- markdownlint-enable MD060 -->
 
 ## 1. Requisitos de Produto
 
@@ -256,3 +259,35 @@ Especificam como a solução será utilizada.
 ### 3.3. Desenvolvimento
 
 Especificam linguagens, ambientes e padrões de processo de desenvolvimento.
+
+## 4. Checklist de Validação do Artefato (RNF)
+
+Use este checklist antes de concluir a versão do documento.
+
+### 4.1. Estrutura e escopo
+
+* [ ] O documento possui histórico de versões preenchido.
+* [ ] O escopo da solução está claro no documento.
+* [ ] Há requisitos registrados nas seções aplicáveis (produto, externos e organizacionais).
+* [ ] Requisitos não aplicáveis estão explicitamente marcados como "Não se aplica", quando necessário.
+
+### 4.2. Qualidade dos requisitos
+
+* [ ] Cada requisito está escrito de forma objetiva e verificável.
+* [ ] Cada requisito possui critério mensurável (tempo, percentual, limite, condição ou evidência).
+* [ ] Não há requisito ambíguo com termos vagos (ex.: "rápido", "seguro", "fácil") sem métrica.
+* [ ] Requisitos duplicados ou conflitantes foram eliminados.
+
+### 4.3. Conformidade e rastreabilidade
+
+* [ ] Requisitos regulatórios/legais relevantes foram registrados.
+* [ ] Requisitos de privacidade e segurança foram contemplados quando aplicáveis.
+* [ ] Os requisitos estão alinhados com visão da demanda, glossário e casos de uso.
+* [ ] Existe rastreabilidade dos requisitos para fontes de negócio, norma ou decisão técnica.
+
+### 4.4. Prontidão para uso
+
+* [ ] Os requisitos podem ser usados como base para implementação e testes.
+* [ ] Há insumos suficientes para criar critérios de aceitação.
+* [ ] O documento foi revisado por pares.
+* [ ] A versão está pronta para aprovação/publicação.
